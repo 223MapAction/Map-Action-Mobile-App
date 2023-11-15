@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "Map-Action-Mobile",
+    "slug": "Map-Action-Mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/map-action.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#2d9cdb"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "Map-Action-Mobile"
+}
