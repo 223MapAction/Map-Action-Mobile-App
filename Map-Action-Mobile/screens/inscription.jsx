@@ -10,17 +10,17 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-//import { register, get_token } from "../utils/http/auth";
-//import Validator from "../utils/validator";
-//import Popup from "../shared/Popup";
-//import { setUser } from "../utils/userStorage";
-//import { update_incident } from "../utils/http/incident";
+import { register, get_token } from "../utils/http/auth";
+import Validator from "../utils/validator";
+import Popup from "../shared/Popup";
+import { setUser } from "../utils/userStorage";
+import { update_incident } from "../utils/http/incident";
 import { onLogin } from "../redux/user/action";
 import { connect } from "react-redux";
 import Auth from "./Auth";
-//import { update_user } from "../utils/http/user";
-// import ChoicePasswordModal from "./ChoicePasswordModal";
-// import { LieuInput } from "./newScreen/newChallenge";
+import { update_user } from "../utils/http/user";
+import ChoicePasswordModal from "./ChoicePasswordModal";
+import { LieuInput } from "./newScreen/newChallenge";
 
 class Inscription extends Auth {
   state = {

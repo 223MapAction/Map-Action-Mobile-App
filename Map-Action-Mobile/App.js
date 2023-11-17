@@ -2,9 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Slide2 from './screens/slides/Slide2';
-//import StackNavigation from './components/StackNavigation';
+import StackNavigation from './components/StackNavigation';
 // import Inscription from './screens/Auth';
 import Accueil from './screens/accueil';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   return (
@@ -12,7 +13,8 @@ export default function App() {
     //   <Text>Welcome!</Text>
     //   <StatusBar style="auto" />
     // </View>
-    <Accueil/>
+    <NavigationContainer><StackNavigation/></NavigationContainer>
+    
   );
 }
 
