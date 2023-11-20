@@ -5,15 +5,15 @@ import * as Facebook from "expo-facebook";
 import LinkedInModal from "react-native-linkedin";
 import manifest from "../app.json";
 import { Icon } from "react-native-elements";
-//import * as AppleAuthentication from "expo-apple-authentication";
-//import jwtDcode from "jwt-decode";
+// import * as AppleAuthentication from "expo-apple-authentication";
+// import jwtDcode from "jwt-decode";
 // import {
 //   loginAsync,
 //   loginWithLinkedIn,
 //   loginWithLinkedInAndGetEmails,
 // } from "../utils/google";
 
-//import { useTwitter } from "react-native-simple-twitter";
+import { useTwitter } from "react-native-simple-twitter";
 import { Platform } from "react-native";
 import { getData, setData } from "../utils/userStorage";
 

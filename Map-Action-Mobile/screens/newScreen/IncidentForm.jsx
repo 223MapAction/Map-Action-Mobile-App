@@ -34,9 +34,9 @@ import { onLogin } from "../../redux/user/action";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AudioReader from "../../shared/AudioReader";
 export const recordingOptions = {
-  android: {
-    ...Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY.android,
-  },
+  // android: {
+  //   ...Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY.android,
+  // },
   ios: {
     extension: ".mp4",
     audioQuality: Audio.RECORDING_OPTION_IOS_AUDIO_QUALITY_MAX,

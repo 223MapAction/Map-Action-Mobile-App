@@ -35,7 +35,7 @@ class TabNavigation extends React.Component {
       >
         <Tab.Screen
           name="Dashboard"
-          options={{ tabBarLabel: "", tabBarIcon: this.renderIcon("home") }}
+          options={{ tabBarLabel: "", tabBarIcon: this.renderIcon("home"), headerShown:false }}
           component={DashboardStack}
         />
         <Tab.Screen
@@ -53,18 +53,19 @@ class TabNavigation extends React.Component {
             tabBarIcon: ({ props }) => (
               <TabBar {...props} navigation={this.props.navigation} />
             ),
+
           }}
           component={CameraStack}
         />
 
         <Tab.Screen
           name="ProfilStackNavigation"
-          options={{ tabBarLabel: "", tabBarIcon: this.renderIcon("person") }}
+          options={{ tabBarLabel: "", tabBarIcon: this.renderIcon("person"), headerShown:false }}
           component={ProfilStackNavigation}
         />
         <Tab.Screen
           name="Challenges"
-          options={{ tabBarLabel: "", tabBarIcon: this.renderIcon("place") }}
+          options={{ tabBarLabel: "", tabBarIcon: this.renderIcon("place"), headerShown:false }}
           component={ChallengesStack}
         />
       </Tab.Navigator>
@@ -93,6 +94,7 @@ const CameraStack = (props) => {
         options={{
           title: "",
           headerStyle: { backgroundColor: "#2D9CDB" },
+          headerShown: false
         }}
       />
     </Stack.Navigator>

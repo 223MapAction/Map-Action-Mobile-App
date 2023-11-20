@@ -1,8 +1,8 @@
 import * as Location from "expo-location";
 import Geocoder from "react-native-geocoding";
 import manifest from "../app.json";
-Geocoder.init(manifest.expo.android.config.googleMaps.apiKey);
-// Geocoder.init("AIzaSyD0klc1PQS8QK--Be3rF3i8kW_idy04AVQ");
+// Geocoder.init(manifest.expo.android.config.googleMaps.apiKey);
+Geocoder.init("AIzaSyD0klc1PQS8QK--Be3rF3i8kW_idy04AVQ");
 import { Alert } from "react-native";
 import Constants from "../utils/constants";
 export const getLocation = async () => {
