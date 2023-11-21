@@ -43,6 +43,7 @@ class TabNavigation extends React.Component {
           options={{
             tabBarLabel: "",
             tabBarIcon: this.renderIcon("question-answer"),
+            headerShown:false
           }}
           component={CommuniquerStack}
         />

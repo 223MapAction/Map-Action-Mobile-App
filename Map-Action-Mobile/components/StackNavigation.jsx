@@ -2,18 +2,15 @@
 // import "moment/locale/fr";
 
 // import React from "react";
-import { Animated } from "react-native";
 // import { NavigationContainer } from "@react-navigation/native";
 // import Welcome from "../screens/welcome";
 // import Accueil from "../screens/accueil";
-import Register from "../screens/newScreen/register";
 // import DrawerNavigation from "./DrawerNavigation";
 
 // import Badge from "../screens/badge/badge";
-// import NewChallenge from "../screens/newScreen/newChallenge";
 // import DetailSecteur from "../screens/detailSecteur";
 // import Communaute from "../screens/newScreen/communaute";
-import Login from "../screens/login";
+// import Login from "../screens/login";
 // import Logout from "../screens/Logout";
 // import HeaderLeft from "../utils/HeaderLeft";
 // import Inscription from "../screens/inscription";
@@ -22,8 +19,7 @@ import Login from "../screens/login";
 // import Ville from "../screens/villes";
 // import DetailVilles from "../screens/detailVilles";
 // import DetailOng from "../screens/detailOng";
-import Camera from "../screens/newScreen/Camera";
-import IncidentForm from "../screens/newScreen/IncidentForm";
+
 // import Messages from "../screens/message";
 // import Account from "../screens/account";
 // import ListIncidents from "../screens/newScreen/ListIncidents";
@@ -31,10 +27,7 @@ import IncidentForm from "../screens/newScreen/IncidentForm";
 // import DetailIncident from "../screens/newScreen/DetailIncident";
 // import ListChallenge from "../screens/newScreen/ListChallenge";
 // import ListChallenge2 from "../screens/badge/ListChallenge2";
-import ForgotPassword from "../screens/ForgotPassword";
-// import Categories from "../screens/Categories";
 // import ChangePassword from "../screens/newScreen/ChangePassword";
-import Header from "../shared/header";
 // import RecordVideo from "../shared/RecordVideo";
 // import Image from "../screens/newScreen/Image";
 // import Gallery from "../screens/newScreen/Gallery";
@@ -287,7 +280,21 @@ const screenOptions = {
 //     );
 //   }
 // }
+import Camera from "../screens/newScreen/Camera";
+import IncidentForm from "../screens/newScreen/IncidentForm";
+import ForgotPassword from "../screens/ForgotPassword";
+import Register from "../screens/newScreen/register";
+import Categories from "../screens/Categories";
+// import NewChallenge from "../screens/newScreen/newChallenge";
+import Messages from "../screens/message";
+import Contact from "../screens/newScreen/Contact";
+import DetailSecteur from "../screens/detailSecteur";
+import Badge from "../screens/badge/badge";
+import Ville from "../screens/villes";
+import DetailIncident from "../screens/newScreen/DetailIncident";
 
+import Header from "../shared/header";
+import { Animated } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import Accueil from "../screens/accueil";
@@ -327,6 +334,69 @@ const StackNavigation = () => {
       <Stack.Screen
           name="Picture"
           component={Camera}
+          options={{
+            headerShown: false,
+          }}
+      />
+      <Stack.Screen
+          name="Categories"
+          component={Categories}
+          options={{
+            title: "Classer l’incident",
+          }}
+       />
+       <Stack.Screen
+          name="Communaute"
+          component={Communaute}
+          options={{
+            title: "Communautés",
+          }}
+        />
+      {/* <Stack.Screen
+          name="NewChallenge"
+          component={NewChallenge}
+          options={{
+            title: "Créer un challenge",
+          }}
+      /> */}
+      <Stack.Screen
+          name="Badge"
+          component={Badge}
+          options={{
+            title: "Gagner un Badge",
+          }}
+      />
+      <Stack.Screen
+          name="Ville"
+          component={Ville}
+          options={{
+            title: "Villes",
+          }}
+      />
+      <Stack.Screen
+          name="Messages"
+          component={Messages}
+          options={{
+            title: "Message",
+          }}
+      />
+      <Stack.Screen
+          name="Contact"
+          component={Contact}
+          options={{
+            title: "Nous contacter",
+          }}
+      />
+      <Stack.Screen
+          name="DetailSecteur"
+          component={DetailSecteur}
+          options={{
+            title: "",
+          }}
+      />
+      <Stack.Screen
+          name="DetailIncident"
+          component={DetailIncident}
           options={{
             headerShown: false,
           }}

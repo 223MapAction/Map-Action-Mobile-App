@@ -21,7 +21,9 @@ class DrawerNavigation extends React.Component {
           <DrawerContent stackNavigation={navigation} {...props} />
         )}
       >
-        <Drawer.Screen name="TabNavigation">
+        <Drawer.Screen name="TabNavigation" options={{
+                                            headerShown: false, 
+                                            }}>
           {(props) => <TabNavigation {...props} />}
         </Drawer.Screen>
       </Drawer.Navigator>
