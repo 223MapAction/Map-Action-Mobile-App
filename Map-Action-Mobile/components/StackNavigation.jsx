@@ -3,7 +3,7 @@
 
 // import React from "react";
 // import { NavigationContainer } from "@react-navigation/native";
-// import Welcome from "../screens/welcome";
+import Welcome from "../screens/welcome";
 // import Accueil from "../screens/accueil";
 // import DrawerNavigation from "./DrawerNavigation";
 
@@ -15,10 +15,9 @@
 // import HeaderLeft from "../utils/HeaderLeft";
 // import Inscription from "../screens/inscription";
 // import Contact from "../screens/newScreen/Contact";
-// import DetailChallenge from "../screens/DetailChallenge";
+
 // import Ville from "../screens/villes";
-// import DetailVilles from "../screens/detailVilles";
-// import DetailOng from "../screens/detailOng";
+
 
 // import Messages from "../screens/message";
 // import Account from "../screens/account";
@@ -280,6 +279,9 @@ const screenOptions = {
 //     );
 //   }
 // }
+// import RecordVideo from "../shared/RecordVideo";
+import Image from "../screens/newScreen/Image";
+import Gallery from "../screens/newScreen/Gallery";
 import Camera from "../screens/newScreen/Camera";
 import IncidentForm from "../screens/newScreen/IncidentForm";
 import ForgotPassword from "../screens/ForgotPassword";
@@ -291,6 +293,17 @@ import Contact from "../screens/newScreen/Contact";
 import DetailSecteur from "../screens/detailSecteur";
 import Badge from "../screens/badge/badge";
 import Ville from "../screens/villes";
+import Communaute from "../screens/newScreen/communaute";
+// import Inscription from "../screens/inscription";
+import Logout from "../screens/Logout";
+import DetailChallenge from "../screens/DetailChallenge";
+import DetailVilles from "../screens/detailVilles";
+import DetailOng from "../screens/detailOng";
+import ListChallenge from "../screens/newScreen/ListChallenge";
+import ListChallenge2 from "../screens/badge/ListChallenge2";
+import Account from "../screens/account";
+import ChangePassword from "../screens/newScreen/ChangePassword";
+import ListIncidents from "../screens/newScreen/ListIncidents";
 import DetailIncident from "../screens/newScreen/DetailIncident";
 
 import Header from "../shared/header";
@@ -306,12 +319,19 @@ import { NavigationContainer } from '@react-navigation/native';
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
-  
+  let initialRouteName = "Welcome";
   return (
     <NavigationContainer>
-    <Stack.Navigator screenOptions={{headerMode: 'screen'}} 
-      initialRouteName="Accueil"
-      >
+    <Stack.Navigator
+        headerMode="screen"
+        initialRouteName={initialRouteName}
+        screenOptions={screenOptions}
+    >
+      <Stack.Screen
+          name="Welcome"
+          component={Welcome}
+          options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Accueil"
         component={Accueil}
@@ -339,6 +359,20 @@ const StackNavigation = () => {
           }}
       />
       <Stack.Screen
+          name="Image"
+          component={Image}
+          options={{
+            title: "",
+          }}
+      />
+      <Stack.Screen
+          name="Gallery"
+          component={Gallery}
+          options={{
+            title: "Galerie",
+          }}
+      />
+      <Stack.Screen
           name="Categories"
           component={Categories}
           options={{
@@ -352,6 +386,20 @@ const StackNavigation = () => {
             title: "Communautés",
           }}
         />
+        <Stack.Screen
+          name="Account"
+          component={Account}
+          options={{
+            title: "Modifier mon profile",
+          }}
+      />
+      <Stack.Screen
+          name="ChangePassword"
+          component={ChangePassword}
+          options={{
+            title: "Modifier mon mot de passe",
+          }}
+      />
       {/* <Stack.Screen
           name="NewChallenge"
           component={NewChallenge}
@@ -359,6 +407,37 @@ const StackNavigation = () => {
             title: "Créer un challenge",
           }}
       /> */}
+      <Stack.Screen
+          name="ListChallenge"
+          component={ListChallenge}
+          options={{
+            title: "évenements",
+          }}
+      />
+      <Stack.Screen
+          name="ListChallenge2"
+          component={ListChallenge2}
+          options={{
+            title: "Challenges",
+          }}
+      />
+      <Stack.Screen
+          name="ListIncidents"
+          component={ListIncidents}
+          options={{
+            title: "",
+          }}
+      />
+      <Stack.Screen
+          name="DetailIncident"
+          component={DetailIncident}
+          options={{
+            headerShown: false,
+          }}
+      />
+      <Stack.Screen name="DetailChallenge" component={DetailChallenge} />
+      <Stack.Screen name="DetailVilles" component={DetailVilles} />
+      <Stack.Screen name="DetailOng" component={DetailOng} />
       <Stack.Screen
           name="Badge"
           component={Badge}
@@ -394,16 +473,17 @@ const StackNavigation = () => {
             title: "",
           }}
       />
-      <Stack.Screen
-          name="DetailIncident"
-          component={DetailIncident}
-          options={{
-            headerShown: false,
-          }}
-      />
+      
       <Stack.Screen name="Register" component={Register} />
       {/* <Stack.Screen name="Login" component={Login} /> */}
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+      {/* <Stack.Screen name="Inscription" component={Inscription} /> */}
+
+      <Stack.Screen
+          name="Logout"
+          component={Logout}
+          options={{ headerShown: false }}
+      />
     </Stack.Navigator>
     </NavigationContainer>
   );

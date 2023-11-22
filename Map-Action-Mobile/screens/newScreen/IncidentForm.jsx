@@ -34,9 +34,15 @@ import { onLogin } from "../../redux/user/action";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AudioReader from "../../shared/AudioReader";
 export const recordingOptions = {
-  // android: {
-  //   ...Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY.android,
-  // },
+  android: {
+    extension: '.mp3',
+    outputFormat: Audio.RECORDING_OPTION_ANDROID_OUTPUT_FORMAT_MPEG_4,
+    audioEncoder: Audio.RECORDING_OPTION_ANDROID_AUDIO_ENCODER_AAC,
+    sampleRate: 44100,
+    bitRate: 128000,
+    numberOfChannels: 2,
+    // ... autres options Android
+  },
   ios: {
     extension: ".mp4",
     audioQuality: Audio.RECORDING_OPTION_IOS_AUDIO_QUALITY_MAX,
@@ -81,7 +87,7 @@ class IncidentForm extends Component {
 
         quality: 1,
       });
-      if (!result.cancelled) {
+      if (!result.canceled) {
         this.setState({ video: result.uri });
       }
     } catch (E) {
@@ -96,7 +102,7 @@ class IncidentForm extends Component {
         "Vous n'êtes pas connecté voulez-vous continuer ?",
         [
           {
-            text: "Non se connecter",
+            text: "Ne pas se connecter",
             onPress: () => {
               this.props.navigation.replace("Login", {
                 nextRoute: "IncidentForm",
@@ -264,7 +270,7 @@ class IncidentForm extends Component {
         console.log("Rc Error", error);
       }
     } else {
-      Alert.alert("Permissions non accorder");
+      Alert.alert("Permissions non accordées");
     }
   }
 
@@ -274,7 +280,7 @@ class IncidentForm extends Component {
       if (status.isDoneRecording) {
         this.setState({ audio: this.recording.getURI() });
       } else {
-        Alert.alert("Errure enregistrement");
+        Alert.alert("Erreur d'enregistrement");
       }
     } catch (ex) {
       console.log(ex);

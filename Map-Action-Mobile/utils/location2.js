@@ -15,7 +15,7 @@ export async function getCurrentPlaces() {
   try {
     const granted = await getLocationPermissions();
     if (!granted) {
-      Alert.alert("", "vous n'avez pas activer la service de localisation");
+      Alert.alert("", "vous n'avez pas activé le service de localisation");
       return [];
     } else {
       const { coords } = await location.getCurrentPositionAsync();
@@ -42,7 +42,7 @@ export async function getCurrentPosition() {
   try {
     const granted = await getLocationPermissions();
     if (!granted) {
-      Alert.alert("", "vous n'avez pas activer la service de localisation");
+      Alert.alert("", "vous n'avez pas activé le service de localisation");
       return null;
     } else {
       const { coords } = await location.getCurrentPositionAsync();
@@ -67,7 +67,7 @@ export async function getPositionFromAdresse(adresse) {
   try {
     const granted = await getLocationPermissions();
     if (!granted) {
-      Alert.alert("", "vous n'avez pas activer la service de localisation");
+      Alert.alert("", "vous n'avez pas activé le service de localisation");
       return null;
     } else {
       const { results } = await Geocoder.from(adresse);
