@@ -72,6 +72,7 @@ const MyHeader = ({ scene, previous, navigation }) => {
 };
 const screenOptions = {
   header: MyHeader,
+  headerMode: "screen",
   gestureEnabled: true,
   transitionSpec: {
     open: config,
@@ -323,7 +324,6 @@ const StackNavigation = () => {
   return (
     <NavigationContainer>
     <Stack.Navigator
-        headerMode="screen"
         initialRouteName={initialRouteName}
         screenOptions={screenOptions}
     >
