@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "Map-Action-Mobile",
+    "slug": "Map-Action-Mobile",
+    "privacy": "public",
+    "facebookScheme": "fb918913918515695",
+    "facebookAppId": "918913918515695",
+    "facebookDisplayName": "Action Map",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/map-action.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#2d9cdb"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "io.actionmap",
+      "supportsTablet": true,
+      "usesAppleSignIn": true,
+      "buildNumber": "1.1.3",
+      "infoPlist": {
+        "NSCameraUsageDescription": "The app needs permission to your camera in order to take photos for upload it as like your profil picture or additional pictures",
+        "NSPhotoLibraryUsageDescription": "The app needs permission to your camera roll in order to add photos you've already taken for upload it as like your profil picture or additional pictures",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This allow us to use your location for incident declaration to get the exact positon of incident and show you the incidents in your sector by your position",
+        "NSLocationAlwaysUsageDescription": "This allow us to use your location for incident declaration to get the exact positon of incident and show you the incidents in your sector by your position",
+        "NSLocationWhenInUseUsageDescription": "This allow us to use your location for incident declaration to get the exact positon of incident and show you the incidents in your sector by your position",
+        "CFBundleAllowMixedLocalizations": true
+      }
+    },
+    "android": {
+      "package": "io.actionmap",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "CAMERA",
+        "RECORD_AUDIO",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "versionCode": 11,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAysTyvKVkmiq0ivkjeA5R3MOC6FQgjyfY"
+        }
+      }
+    }
+  },
+  "name": "Map-Action-Mobile"
+}
