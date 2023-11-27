@@ -1,48 +1,57 @@
-# Map-Action-App
+# Map-Action-Mobile-App
 
-Map-Action Mobile App
 
-# User and developper documentation
 
-# Developper documentation
+## User and developper documentation
 
-# Requierements
+### Developper documentation
 
-. node v18 (use nvm to manage node version)
+#### Requierements
 
-# Setup
+- Node.js v18 (Use nvm to manage Node.js version)
 
-# utiliser npm
-npm install
-# utiliser yarn / expo
+#### Setup
+**Using npm:**
+```bash
+npm install 
+```
+**Using yarn/expo:**
+``` bash
 yarn upgrade 
 or
 npx expo install
+```
 # local env files
-.env*.local
+`.env*.local `
 
-Development Server
+#### Development Server
 
-# compilation 
-
-# using npm
+**Using npm:**
+```bash
 npm run:android or npm run:ios
+```
 
-# using expo
-npx expo start *** dev client**
+**Using expo:**
+```bash
+npx expo start dev client
+# or
 npx expo run:android
-or
+# or
 npx expo run:ios
+```
 
-Recommanded editor and settings
-. VS Code 
+#### Recommanded editor and settings
+- Vs Code 
 
 
-    # User documentation
+### User documentation
 
-l'application mobile est disponible sur play store pour android et app store pour iphone.
-une fois l'application téléchargée:
-vous avez la possibilité d'importer des incidents, seulement en prenant la photo de l'incident. après vous pouvez ajouter une note vocale pour commenter l'incident et/ou ajouter une vidéo et une description de l'incident c'est facile non?
+The mobile application is available on the Play Store for Android and the App Store for iPhone.
+Once the application is downloaded:
+
+- Import incidents by taking a photo of the incident.
+- Add a voice note to comment on the incident.
+- Include a video and description for the incident.
 
 
 
