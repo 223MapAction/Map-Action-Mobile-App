@@ -1,4 +1,5 @@
-import { AsyncStorage, Alert } from "react-native";
+import { Alert } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage"
 const APP_STORAGE_KEY = "123456544GGGFGGFFFGFGFGFG";
 const USER_STORAGE_KEY = "12345654DBGFHRGGSGSG";
 export async function getUser() {

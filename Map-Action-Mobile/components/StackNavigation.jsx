@@ -225,7 +225,7 @@ import DetailSecteur from "../screens/detailSecteur";
 import Badge from "../screens/badge/badge";
 import Ville from "../screens/villes";
 import Communaute from "../screens/newScreen/communaute";
-// import Inscription from "../screens/inscription";
+import Inscription from "../screens/inscription";
 import Logout from "../screens/Logout";
 import DetailChallenge from "../screens/DetailChallenge";
 import DetailVilles from "../screens/detailVilles";
@@ -243,6 +243,7 @@ import React from "react";
 import Accueil from "../screens/accueil";
 import DrawerNavigation from "./DrawerNavigation";
 import { NavigationContainer } from '@react-navigation/native';
+import Login from "../screens/login";
 
 const Stack = createStackNavigator();
 
@@ -258,7 +259,13 @@ const config = {
   },
 };
 const MyHeader = ({ scene, previous, navigation }) => {
+  if (!scene || !scene.descriptor) {   
+    return null;
+  }
   const { options } = scene.descriptor;
+  if (!options) {
+    return null;
+  }
   const title =
     options.headerTitle !== undefined
       ? options.headerTitle
@@ -473,9 +480,9 @@ const StackNavigation = () => {
       />
       
       <Stack.Screen name="Register" component={Register} />
-      {/* <Stack.Screen name="Login" component={Login} /> */}
+      <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-      {/* <Stack.Screen name="Inscription" component={Inscription} /> */}
+      <Stack.Screen name="Inscription" component={Inscription} />
 
       <Stack.Screen
           name="Logout"

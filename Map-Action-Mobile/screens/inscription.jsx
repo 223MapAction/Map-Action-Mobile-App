@@ -41,8 +41,8 @@ class Inscription extends Auth {
   Schema = Validator.object().shape({
     email: Validator.string().email().required().label("Adresse Mail"),
     phone: Validator.string().label("N° de téléphone du citoyen"),
-    first_name: Validator.string().min(2).required().max(30).label("Prénom"),
-    last_name: Validator.string().min(2).required().max(30).label("Nom"),
+    first_name: Validator.string().min(2).required().max(100).label("Prénom"),
+    last_name: Validator.string().min(2).required().max(100).label("Nom"),
     adress: Validator.string().max(255).label("Adresse"),
     password: Validator.string().min(5).required().label("Mot De Passe"),
     password_confirmation: Validator.string()
@@ -330,7 +330,7 @@ class Inscription extends Auth {
                       value={this.state.password}
                       placeholder="Mot de passe"
                       secureTextEntry={true}
-                      keyboardType="visible-password"
+                      // keyboardType="visible-password"
                       placeholderTextColor="#888787"
                       onChangeText={(password) => this.setState({ password })}
                     />
@@ -358,7 +358,7 @@ class Inscription extends Auth {
                       value={this.state.password_confirmation}
                       placeholder="Confirmer mot de passe"
                       placeholderTextColor="#888787"
-                      keyboardType="visible-password"
+                      // keyboardType="visible-password"
                       secureTextEntry={true}
                       onChangeText={(password_confirmation) =>
                         this.setState({ password_confirmation })
@@ -451,7 +451,7 @@ class Inscription extends Auth {
           <MaterialIcons name="close" size={30} color={"#666666"} />
         </TouchableOpacity>
         <Text style={{ textAlign: "center", fontSize: 20 }}>
-          Votre inscription est prise en compe !
+          Votre inscription est prise en compte !
         </Text>
         <TouchableOpacity
           style={{
