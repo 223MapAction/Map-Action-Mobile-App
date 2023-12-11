@@ -20,6 +20,15 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "plugins": [
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone.",
+          "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone."
+        }
+      ]
+    ],
     "ios": {
       "bundleIdentifier": "io.actionmap",
       "supportsTablet": true,
@@ -27,6 +36,7 @@
       "buildNumber": "1.1.3",
       "infoPlist": {
         "NSCameraUsageDescription": "The app needs permission to your camera in order to take photos for upload it as like your profil picture or additional pictures",
+        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone.",
         "NSPhotoLibraryUsageDescription": "The app needs permission to your camera roll in order to add photos you've already taken for upload it as like your profil picture or additional pictures",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "This allow us to use your location for incident declaration to get the exact positon of incident and show you the incidents in your sector by your position",
         "NSLocationAlwaysUsageDescription": "This allow us to use your location for incident declaration to get the exact positon of incident and show you the incidents in your sector by your position",

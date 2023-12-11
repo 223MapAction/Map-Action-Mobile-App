@@ -11,7 +11,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Picture from "../screens/pictureComponent";
 import TabBar from "./TabBar";
 const Stack = createStackNavigator();
-
 import { connect } from "react-redux";
 import Communiquer from "../screens/communiquer";
 import HeaderLeft from "../utils/HeaderLeft";
@@ -27,7 +26,7 @@ class TabNavigation extends React.Component {
         inactiveColor="rgba(0,0,0,.5)"
         backBehavior="initialRoute"
         shifting={false}
-        tabBarOptions={{
+        ScreenOptions={{
           showLabel: false,
           style: { height: Platform.OS === "ios" ? 60 : 55 },
           tabStyle: { justifyContent: "center" },
@@ -108,7 +107,7 @@ const DashboardStack = connect(
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Dashboard"
+        name="DashboardStack"
         component={Dashboard}
         options={{
           header: () => (
@@ -137,7 +136,7 @@ const CommuniquerStack = connect(
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Communiquer"
+        name="CommunicateStack"
         component={Communiquer}
         options={{
           header: () => (
@@ -160,7 +159,7 @@ const ChallengesStack = connect(
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Challenges"
+        name="ChallengesStack"
         component={Challenges}
         options={{
           header: () => (

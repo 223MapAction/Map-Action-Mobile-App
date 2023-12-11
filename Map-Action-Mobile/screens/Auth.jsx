@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import { View, Text, Alert, TouchableOpacity, Dimensions } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 import * as Facebook from "expo-facebook";
-import LinkedInModal from "react-native-linkedin";
+// import LinkedInModal from "react-native-linkedin";
 import manifest from "../app.json";
 import { Icon } from "react-native-elements";
 // import * as AppleAuthentication from "expo-apple-authentication";
-// import jwtDcode from "jwt-decode";
-// import {
-//   loginAsync,
-//   loginWithLinkedIn,
-//   loginWithLinkedInAndGetEmails,
-// } from "../utils/google";
+import jwtDcode from "jwt-decode";
+import {
+  loginAsync,
+  loginWithLinkedIn,
+  loginWithLinkedInAndGetEmails,
+} from "../utils/google";
 
 import { useTwitter } from "react-native-simple-twitter";
 import { Platform } from "react-native";
@@ -78,44 +78,44 @@ export default class Inscription extends Component {
     );
   }
 
-  async registerWithLinkedIn(token) {
-    this.setState({ loading: true });
-    try {
-      const data = await loginWithLinkedIn(token);
-      const finalData = {
-        first_name: data.localizedFirstName,
-        last_name: data.localizedLastName,
-        adress: "",
-        phone: "",
-        provider: "LinkedIn",
-      };
-      const data2 = await loginWithLinkedInAndGetEmails(token);
-      finalData.email = data2.elements[0]["handle~"].emailAddress;
-      this.onFinish(finalData);
-    } catch (ex) {
-      Alert.alert("", "inscription impossible", [
-        { text: "Ok", style: "cancel" },
-      ]);
-    }
-    this.setState({ loading: false });
-  }
+  // async registerWithLinkedIn(token) {
+  //   this.setState({ loading: true });
+  //   try {
+  //     const data = await loginWithLinkedIn(token);
+  //     const finalData = {
+  //       first_name: data.localizedFirstName,
+  //       last_name: data.localizedLastName,
+  //       adress: "",
+  //       phone: "",
+  //       provider: "LinkedIn",
+  //     };
+  //     const data2 = await loginWithLinkedInAndGetEmails(token);
+  //     finalData.email = data2.elements[0]["handle~"].emailAddress;
+  //     this.onFinish(finalData);
+  //   } catch (ex) {
+  //     Alert.alert("", "inscription impossible", [
+  //       { text: "Ok", style: "cancel" },
+  //     ]);
+  //   }
+  //   this.setState({ loading: false });
+  // }
 
-  renderLinkedInModal(title = "") {
-    if (!this.state.linkedInModal) return null;
-    return (
-      <LinkedInModal
-        linkText={title + " avec LinkedIn"}
-        clientSecret="PSXUn5CERO91Dpgr"
-        permissions={["r_liteprofile", "r_emailaddress"]}
-        clientID="78ljig6vq3qg4g"
-        redirectUri="https://google.co.in"
-        onError={() => null}
-        onSuccess={({ access_token }) =>
-          this.registerWithLinkedIn(access_token)
-        }
-      />
-    );
-  }
+  // renderLinkedInModal(title = "") {
+  //   if (!this.state.linkedInModal) return null;
+  //   return (
+  //     <LinkedInModal
+  //       linkText={title + " avec LinkedIn"}
+  //       clientSecret="PSXUn5CERO91Dpgr"
+  //       permissions={["r_liteprofile", "r_emailaddress"]}
+  //       clientID="78ljig6vq3qg4g"
+  //       redirectUri="https://google.co.in"
+  //       onError={() => null}
+  //       onSuccess={({ access_token }) =>
+  //         this.registerWithLinkedIn(access_token)
+  //       }
+  //     />
+  //   );
+  // }
 
   logIn = async () => {
     try {
@@ -244,12 +244,12 @@ export default class Inscription extends Component {
           "#e94235",
           () => this.registerWithGoogle()
         )}
-        {this.renderSocial(
+        {/* {this.renderSocial(
           { name: "linkedin", type: "font-awesome" },
           () => this.renderLinkedInModal(title),
           "rgb(1, 111, 171)",
           () => this.setState({ linkedInModal: true })
-        )}
+        )} */}
 
         {Platform.OS === "ios" && (
           <View

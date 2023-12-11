@@ -25,7 +25,7 @@ class Login extends Auth {
     email: "",
     password: "",
     isModalVisible: false,
-    linkedInModal: true,
+    // linkedInModal: true,
     loading: false,
   };
   Schema = Validator.object().shape({

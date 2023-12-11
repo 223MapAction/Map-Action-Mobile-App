@@ -1,4 +1,5 @@
-import * as Google from "expo-google-app-auth";
+// import * as Google from "expo-google-app-auth";
+import * as Google from "expo-auth-session/providers/google"
 import axios from "axios";
 
 const config = {

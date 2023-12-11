@@ -3,7 +3,6 @@
 
 // import React from "react";
 // import { NavigationContainer } from "@react-navigation/native";
-import Welcome from "../screens/welcome";
 // import Accueil from "../screens/accueil";
 // import DrawerNavigation from "./DrawerNavigation";
 
@@ -31,76 +30,6 @@ import Welcome from "../screens/welcome";
 // import Image from "../screens/newScreen/Image";
 // import Gallery from "../screens/newScreen/Gallery";
 // const Stack = createStackNavigator();
-const config = {
-  animation: "spring",
-  config: {
-    stiffness: 1000,
-    damping: 500,
-    mass: 3,
-    overshootClamping: true,
-    restDisplacementThreshold: 0.01,
-    restSpeedThreshold: 0.01,
-  },
-};
-const MyHeader = ({ scene, previous, navigation }) => {
-  const { options } = scene.descriptor;
-  const title =
-    options.headerTitle !== undefined
-      ? options.headerTitle
-      : options.title !== undefined
-      ? options.title
-      : // : scene.route.name;
-        "";
-  if (options.headerShown === false) return null;
-
-  const showImage = [
-    "Register",
-    "ForgotPassword",
-    "Inscription",
-    "Login",
-  ].includes(scene.route.name);
-
-  return (
-    <Header
-      navigation={navigation}
-      style={options.headerStyle}
-      showImage={showImage}
-      title={title}
-      leftButton={() => <HeaderLeft colors="#2D9CDB" />}
-    />
-  );
-};
-const screenOptions = {
-  header: MyHeader,
-  headerMode: "screen",
-  gestureEnabled: true,
-  transitionSpec: {
-    open: config,
-    close: config,
-  },
-  gestureDirection: "vertical",
-  cardStyleInterpolator: ({ current, layouts }) => {
-    const translateY = current.progress.interpolate({
-      inputRange: [0, 1],
-      outputRange: [layouts.screen.height, 0],
-    });
-    const scale = Animated.divide(translateY, 1.5).interpolate({
-      inputRange: [0, layouts.screen.height],
-      outputRange: [1, 0.6],
-    });
-    const opacity = translateY.interpolate({
-      inputRange: [0, layouts.screen.height],
-      outputRange: [1, 0],
-    });
-
-    return {
-      cardStyle: {
-        transform: [{ translateY }, { scale }],
-        opacity,
-      },
-    };
-  },
-};
 
 // export default class StackNavigation extends React.Component {
 //   render() {
@@ -281,6 +210,7 @@ const screenOptions = {
 //   }
 // }
 // import RecordVideo from "../shared/RecordVideo";
+import Welcome from "../screens/welcome";
 import Image from "../screens/newScreen/Image";
 import Gallery from "../screens/newScreen/Gallery";
 import Camera from "../screens/newScreen/Camera";
@@ -295,7 +225,7 @@ import DetailSecteur from "../screens/detailSecteur";
 import Badge from "../screens/badge/badge";
 import Ville from "../screens/villes";
 import Communaute from "../screens/newScreen/communaute";
-// import Inscription from "../screens/inscription";
+import Inscription from "../screens/inscription";
 import Logout from "../screens/Logout";
 import DetailChallenge from "../screens/DetailChallenge";
 import DetailVilles from "../screens/detailVilles";
@@ -306,7 +236,6 @@ import Account from "../screens/account";
 import ChangePassword from "../screens/newScreen/ChangePassword";
 import ListIncidents from "../screens/newScreen/ListIncidents";
 import DetailIncident from "../screens/newScreen/DetailIncident";
-
 import Header from "../shared/header";
 import { Animated } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -314,10 +243,86 @@ import React from "react";
 import Accueil from "../screens/accueil";
 import DrawerNavigation from "./DrawerNavigation";
 import { NavigationContainer } from '@react-navigation/native';
-
-
+import Login from "../screens/login";
 
 const Stack = createStackNavigator();
+
+const config = {
+  animation: "spring",
+  config: {
+    stiffness: 1000,
+    damping: 500,
+    mass: 3,
+    overshootClamping: true,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
+const MyHeader = ({ scene, previous, navigation }) => {
+  if (!scene || !scene.descriptor) {   
+    return null;
+  }
+  const { options } = scene.descriptor;
+  if (!options) {
+    return null;
+  }
+  const title =
+    options.headerTitle !== undefined
+      ? options.headerTitle
+      : options.title !== undefined
+      ? options.title
+      : // : scene.route.name;
+        "";
+  if (options.headerShown === false) return null;
+
+  const showImage = [
+    "Register",
+    "ForgotPassword",
+    "Inscription",
+    "Login",
+  ].includes(scene.route.name);
+
+  return (
+    <Header
+      navigation={navigation}
+      style={options.headerStyle}
+      showImage={showImage}
+      title={title}
+      leftButton={() => <HeaderLeft colors="#2D9CDB" />}
+    />
+  );
+};
+const screenOptions = {
+  header: MyHeader,
+  headerMode: "screen",
+  gestureEnabled: true,
+  transitionSpec: {
+    open: config,
+    close: config,
+  },
+  gestureDirection: "vertical",
+  cardStyleInterpolator: ({ current, layouts }) => {
+    const translateY = current.progress.interpolate({
+      inputRange: [0, 1],
+      outputRange: [layouts.screen.height, 0],
+    });
+    const scale = Animated.divide(translateY, 1.5).interpolate({
+      inputRange: [0, layouts.screen.height],
+      outputRange: [1, 0.6],
+    });
+    const opacity = translateY.interpolate({
+      inputRange: [0, layouts.screen.height],
+      outputRange: [1, 0],
+    });
+
+    return {
+      cardStyle: {
+        transform: [{ translateY }, { scale }],
+        opacity,
+      },
+    };
+  },
+};
 
 const StackNavigation = () => {
   let initialRouteName = "Welcome";
@@ -475,9 +480,9 @@ const StackNavigation = () => {
       />
       
       <Stack.Screen name="Register" component={Register} />
-      {/* <Stack.Screen name="Login" component={Login} /> */}
+      <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-      {/* <Stack.Screen name="Inscription" component={Inscription} /> */}
+      <Stack.Screen name="Inscription" component={Inscription} />
 
       <Stack.Screen
           name="Logout"
