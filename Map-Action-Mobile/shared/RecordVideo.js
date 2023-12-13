@@ -29,7 +29,7 @@ export default class RecordVideo extends Component {
   async componentWillMount() {
     const { status } = await Audio.requestPermissionsAsync();
     if (status === "granted") {
-      let status = (await Camera.requestPermissionsAsync()).status;
+      let status = (await Camera.useCameraPermissions()).status;
       if (status !== "granted") {
         alert("Sorry, we need camera permissions to make this work!");
         this.props.onHide();

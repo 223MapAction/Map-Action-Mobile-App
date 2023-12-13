@@ -26,7 +26,7 @@ export async function reverseGeocode(asress) {
   return null;
 }
 export async function ensure() {
-  const status = await Location.requestPermissionsAsync();
+  const status = await Location.requestForegroundPermissionsAsync();
   if (!status.granted) {
     Alert.alert("", "Permission to access location was denied");
     return false;
