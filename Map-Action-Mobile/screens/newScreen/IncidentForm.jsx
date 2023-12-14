@@ -88,7 +88,7 @@ class IncidentForm extends Component {
         quality: 1,
       });
       if (!result.canceled) {
-        this.setState({ video: result.uri });
+        this.setState({ video: result.assets });
       }
     } catch (E) {
       console.log(E);

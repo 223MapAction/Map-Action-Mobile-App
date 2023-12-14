@@ -26,6 +26,14 @@
         {
           "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone.",
           "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone."
+        },
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission":"Allow $(Map action) to use your location"
+        },
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
         }
       ]
     ],

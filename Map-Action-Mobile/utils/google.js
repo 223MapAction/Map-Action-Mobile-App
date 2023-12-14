@@ -1,7 +1,7 @@
 // import * as Google from "expo-google-app-auth";
 import * as Google from "expo-auth-session/providers/google"
 import axios from "axios";
-
+const sadiaApi= '7ed701de-33b6-4541-a04b-8633fceae3ff';
 const config = {
   iosClientId:
     /* "853178679023-di2lnclenhm3ob0cqkignc7d76o8efoj.apps.googleusercontent.com", */
@@ -18,13 +18,27 @@ const config = {
   scopes: ["profile"],
 };
 export async function loginAsync() {
-  const { type, ...rest } = await Google.logInAsync(config);
+  try {
+    const { type, ...rest } = await Google.logInAsync(config);
 
-  if (type === "success") {
-    return rest;
+    if (type === 'success') {
+      return rest;
+    } else if (type === 'error') {
+      // Gérer l'erreur spécifique
+      console.error('Erreur lors de la connexion:', rest.error);
+      return null;
+    } else {
+      // L'utilisateur a annulé la connexion
+      console.warn('Connexion annulée par l\'utilisateur');
+      return null;
+    }
+  } catch (error) {
+    // Gérer toute autre erreur inattendue
+    console.error('Erreur inattendue lors de la connexion:', error);
+    return null;
   }
-  return {};
 }
+
 
 export async function loginWithLinkedIn(token) {
   const { data } = await axios.get("https://api.linkedin.com/v2/me", {
