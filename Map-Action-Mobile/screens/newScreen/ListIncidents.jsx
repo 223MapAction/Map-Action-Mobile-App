@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image, FlatList } from "react-native";
+import { View, Text, StyleSheet, Image, FlatList, ActivityIndicator } from "react-native";
 import { getImage } from "../../utils/http/http";
 import { connect } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -7,7 +7,6 @@ import moment from "moment";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Map from "../../shared/Map";
 import * as Location from "expo-location";
-import * as Permissions from "expo-permissions";
 import SafeAreaView from "react-native-safe-area-view";
 
 const deltas = {
@@ -23,6 +22,7 @@ class ListIncidents extends Component {
 
   componentDidMount() {
     const title = this.props.route?.params?.title;
+    console.log("My route exist: ", title)
     if (title) {
       this.props.navigation.setOptions({ title });
     }
@@ -34,6 +34,7 @@ class ListIncidents extends Component {
       return item.incidents;
     }
     const incidents = this.props.incidents;
+    console.log(incidents)
     const user_id = this.props.route?.params?.user_id || null;
     if (null === user_id) return incidents;
     return incidents.filter((i) => i.user_id === user_id);
@@ -44,7 +45,7 @@ class ListIncidents extends Component {
   }
 
   getLocationAsync = async () => {
-    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    let { status } = await Location.getForegroundPermissionsAsync();
     if (status !== "granted") {
       this.setState({
         errorMessage: "La permission d'accéder à l'emplacement a été refusée",
@@ -62,8 +63,17 @@ class ListIncidents extends Component {
 
   render() {
     const incidents = this.getIncidents();
+    console.log("the incident: ", incidents)
     const item = this.props.route?.params?.item;
     const { region } = this.state;
+    if (!region) {
+      return (
+        <View style={styles.container}>
+          {/* Afficher un indicateur de chargement ou un message */}
+          <ActivityIndicator color="#000" size="large" />
+        </View>
+      );
+    }
     return (
       <View style={styles.container}>
         <Map

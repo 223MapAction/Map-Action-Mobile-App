@@ -6,9 +6,9 @@ const config = {
   iosClientId:
     /* "853178679023-di2lnclenhm3ob0cqkignc7d76o8efoj.apps.googleusercontent.com", */
     "110249823000-t1l6jl7g0qpaop5ogui51ku1c4it0t5f.apps.googleusercontent.com",
-  androidClientId:
+  ClientId:
     /* "853178679023-oa1rs2n9ci8707qn5mo1ipha7hkbou8l.apps.googleusercontent.com", */
-    "110249823000-6si3vn546bkf1t4q5umdhs402hckdmv0.apps.googleusercontent.com",
+    "292571474979-qkev39d82s0f2ntpnv9jh5puel8hjhog.apps.googleusercontent.com",
   iosStandaloneAppClientId:
     /* "853178679023-mjgffq5c4kaq65718e49p5b1km888lqr.apps.googleusercontent.com" */
     "110249823000-o91i5p0t6eer4bh44cab412hf6vph5kg.apps.googleusercontent.com",

@@ -244,6 +244,8 @@ import Accueil from "../screens/accueil";
 import DrawerNavigation from "./DrawerNavigation";
 import { NavigationContainer } from '@react-navigation/native';
 import Login from "../screens/login";
+import HeaderLeft from "../utils/HeaderLeft";
+
 
 const Stack = createStackNavigator();
 
@@ -258,21 +260,22 @@ const config = {
     restSpeedThreshold: 0.01,
   },
 };
-const MyHeader = ({ scene, previous, navigation }) => {
-  if (!scene || !scene.descriptor) {   
+const MyHeader = ({ route, navigation, ...otherProps }) => {
+  // console.log("les props de mon header: ", {route, navigation, otherProps})
+  if (!route || !route.name) {
+    console.error("Nom de route manquant ou incorrect");
     return null;
   }
-  const { options } = scene.descriptor;
-  if (!options) {
+
+  const { options } = otherProps;
+
+  if (!options || typeof options.headerShown !== 'boolean') {
+    console.error("Erreur dans les options ou headerShown manquant");
     return null;
   }
-  const title =
-    options.headerTitle !== undefined
-      ? options.headerTitle
-      : options.title !== undefined
-      ? options.title
-      : // : scene.route.name;
-        "";
+
+  const title = options.title || '';
+
   if (options.headerShown === false) return null;
 
   const showImage = [
@@ -280,7 +283,7 @@ const MyHeader = ({ scene, previous, navigation }) => {
     "ForgotPassword",
     "Inscription",
     "Login",
-  ].includes(scene.route.name);
+  ].includes(route.name);
 
   return (
     <Header

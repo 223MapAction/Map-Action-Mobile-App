@@ -94,7 +94,7 @@ class Login extends Auth {
     const { email, password } = this.state;
     try {
       const data = await login({ email, password });
-      let user_id = JwtDecode(data.token);
+      let user_id = JwtDecode(token);
       const user = await read_user(user_id.user_id);
       console.log("user", user_id);
       this.props.onLogin({ token: data.token, user });
