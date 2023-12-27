@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, Alert, TouchableOpacity, Dimensions } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
-import * as Facebook from "expo-facebook";
+import * as Facebook from "react-native-fbsdk-next";
+import { Settings } from "react-native-fbsdk-next";
 // import LinkedInModal from "react-native-linkedin";
 import manifest from "../app.json";
 import { Icon } from "react-native-elements";
@@ -78,50 +79,50 @@ export default class Inscription extends Component {
     );
   }
 
-  // async registerWithLinkedIn(token) {
-  //   this.setState({ loading: true });
-  //   try {
-  //     const data = await loginWithLinkedIn(token);
-  //     const finalData = {
-  //       first_name: data.localizedFirstName,
-  //       last_name: data.localizedLastName,
-  //       adress: "",
-  //       phone: "",
-  //       provider: "LinkedIn",
-  //     };
-  //     const data2 = await loginWithLinkedInAndGetEmails(token);
-  //     finalData.email = data2.elements[0]["handle~"].emailAddress;
-  //     this.onFinish(finalData);
-  //   } catch (ex) {
-  //     Alert.alert("", "inscription impossible", [
-  //       { text: "Ok", style: "cancel" },
-  //     ]);
-  //   }
-  //   this.setState({ loading: false });
-  // }
+  async registerWithLinkedIn(token) {
+    this.setState({ loading: true });
+    try {
+      const data = await loginWithLinkedIn(token);
+      const finalData = {
+        first_name: data.localizedFirstName,
+        last_name: data.localizedLastName,
+        adress: "",
+        phone: "",
+        provider: "LinkedIn",
+      };
+      const data2 = await loginWithLinkedInAndGetEmails(token);
+      finalData.email = data2.elements[0]["handle~"].emailAddress;
+      this.onFinish(finalData);
+    } catch (ex) {
+      Alert.alert("", "inscription impossible", [
+        { text: "Ok", style: "cancel" },
+      ]);
+    }
+    this.setState({ loading: false });
+  }
 
-  // renderLinkedInModal(title = "") {
-  //   if (!this.state.linkedInModal) return null;
-  //   return (
-  //     <LinkedInModal
-  //       linkText={title + " avec LinkedIn"}
-  //       clientSecret="PSXUn5CERO91Dpgr"
-  //       permissions={["r_liteprofile", "r_emailaddress"]}
-  //       clientID="78ljig6vq3qg4g"
-  //       redirectUri="https://google.co.in"
-  //       onError={() => null}
-  //       onSuccess={({ access_token }) =>
-  //         this.registerWithLinkedIn(access_token)
-  //       }
-  //     />
-  //   );
-  // }
+  renderLinkedInModal(title = "") {
+    if (!this.state.linkedInModal) return null;
+    return (
+      <LinkedInModal
+        linkText={title + " avec LinkedIn"}
+        clientSecret="PSXUn5CERO91Dpgr"
+        permissions={["r_liteprofile", "r_emailaddress"]}
+        clientID="78ljig6vq3qg4g"
+        redirectUri="https://google.co.in"
+        onError={() => null}
+        onSuccess={({ access_token }) =>
+          this.registerWithLinkedIn(access_token)
+        }
+      />
+    );
+  }
 
   logIn = async () => {
     try {
-      await Facebook.initializeAsync(manifest.expo.facebookAppId);
+      await Facebook.Settings.setAppID(manifest.expo.appID);
       const { type, token } = await Facebook.logInWithReadPermissionsAsync(
-        manifest.expo.facebookAppId,
+        manifest.expo.appID,
         {
           permissions: ["public_profile", "email"],
         }

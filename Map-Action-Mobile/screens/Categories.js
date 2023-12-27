@@ -27,6 +27,7 @@ const Categories = ({
   const [categories, setCategories] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [category, setCategory] = React.useState({});
+  const [selectedCategory, setSelectedCategory] = React.useState(null);
   React.useEffect(() => {
     list_categories().then((categories) => {
       setCategories(categories);

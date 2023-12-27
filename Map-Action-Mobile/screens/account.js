@@ -48,7 +48,7 @@ class Account extends Component {
     phone: validator.string().label("téléphone"),
     first_name: validator.string().min(2).required().max(30).label("Prénom"),
     last_name: validator.string().min(2).required().max(30).label("Nom"),
-    adress: validator.string().max(30).label("Adresse"),
+    adress: validator.string().max(250).label("Adresse"),
   });
 
   submit = async () => {

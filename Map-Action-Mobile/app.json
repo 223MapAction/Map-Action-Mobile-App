@@ -3,9 +3,14 @@
     "name": "Map-Action-Mobile",
     "slug": "Map-Action-Mobile",
     "privacy": "public",
-    "facebookScheme": "fb918913918515695",
-    "facebookAppId": "918913918515695",
-    "facebookDisplayName": "Action Map",
+    "appID": "7407210972645627",
+    "clientToken": "0b6b30dd0d9c3a96e365620defc6a6b7",
+    "displayName": "action map",
+    "scheme": "fb7407210972645627",
+    "advertiserIDCollectionEnabled": false,
+    "autoLogAppEventsEnabled": false,
+    "isAutoInitEnabled": true,
+    "iosUserTrackingPermission": "This identifier will be used to deliver personalized ads to you.",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,15 +27,7 @@
     ],
     "plugins": [
       [
-        "expo-av",
-        {
-          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone.",
-          "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone."
-        },
-        "expo-location",
-        {
-          "locationAlwaysAndWhenInUsePermission":"Allow $(Map action) to use your location"
-        },
+        
         "expo-camera",
         {
           "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."

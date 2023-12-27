@@ -102,7 +102,7 @@ class IncidentForm extends Component {
         "Vous n'êtes pas connecté voulez-vous continuer ?",
         [
           {
-            text: "Ne pas se connecter",
+            text: "Se connecter",
             onPress: () => {
               this.props.navigation.replace("Login", {
                 nextRoute: "IncidentForm",
