@@ -6,7 +6,7 @@ import { Settings } from "react-native-fbsdk-next";
 // import LinkedInModal from "react-native-linkedin";
 import manifest from "../app.json";
 import { Icon } from "react-native-elements";
-// import * as AppleAuthentication from "expo-apple-authentication";
+import * as AppleAuthentication from "expo-apple-authentication";
 import jwtDcode from "jwt-decode";
 import {
   loginAsync,
@@ -56,7 +56,8 @@ function TwitterLogin({ onFinish, Tref }) {
 
 export default class Inscription extends Component {
   async registerWithGoogle() {
-    const data = await loginAsync();
+    try {
+      const data = await loginAsync();
     const userInfo = {
       email: data.user.email,
       first_name: data.user.givenName,
@@ -67,6 +68,10 @@ export default class Inscription extends Component {
       avatar: data.user.photoUrl,
     };
     this.onFinish(userInfo);
+    } catch (error) {
+      Alert.alert('', 'error when we tried to register with google', error)
+    }
+    
   }
   twitterRef = React.createRef();
 
@@ -317,7 +322,7 @@ export default class Inscription extends Component {
                   if (e.code === "ERR_CANCELED") {
                     // handle that the user canceled the sign-in flow
                   } else {
-                    Alert.alert("", "Error when login with apple");
+                    Alert.alert("", "Error when login with apple :"+ error.message);
                     // handle other errors
                   }
                 }
