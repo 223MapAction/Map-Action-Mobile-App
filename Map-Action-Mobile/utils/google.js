@@ -1,7 +1,6 @@
 // import * as Google from "expo-google-app-auth";
 import * as Google from "expo-auth-session/providers/google"
 import axios from "axios";
-const sadiaApi= '7ed701de-33b6-4541-a04b-8633fceae3ff';
 const config = {
   iosClientId:
     /* "853178679023-di2lnclenhm3ob0cqkignc7d76o8efoj.apps.googleusercontent.com", */

@@ -134,6 +134,7 @@ class Account extends Component {
     );
   }
   async pickImage() {
+    console.log("La fonction pickImage est appelée.");
     const { uri } = await pickImage();
 
     if (uri) {
@@ -142,7 +143,7 @@ class Account extends Component {
   }
 
   render() {
-    console.log("error,", this.state.photo);
+    console.log("erreur avec la photo,", this.state.photo);
 
     return (
       <View style={styles.container}>
@@ -171,7 +172,7 @@ class Account extends Component {
                 }
                 containerStyle={{ margin: 10 }}
               />
-            </View>
+            </View> 
             <Text style={styles.text}>
               {this.props.user.first_name} {this.props.user.last_name}
             </Text>

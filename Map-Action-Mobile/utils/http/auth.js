@@ -44,9 +44,21 @@ export function get_token(email, password) {
 export function getTokenByEmail(email) {
   return http.post("/gettoken_bymail/", { email });
 }
+export function login_with_google(user){
+  return http.post("/accounts/google/login/")
+}
+export function login_with_facebook(user){
+  return http.post("/accounts/facebook/login/")
+}
+export function login_with_apple(user){
+  return http.post("/accounts/apple/login/")
+}
 
 export default {
   register,
   login,
   verify_token,
+  login_with_google,
+  login_with_facebook,
+  login_with_apple,
 };

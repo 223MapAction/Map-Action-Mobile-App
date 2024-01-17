@@ -322,7 +322,7 @@ export default class Inscription extends Component {
                   if (e.code === "ERR_CANCELED") {
                     // handle that the user canceled the sign-in flow
                   } else {
-                    Alert.alert("", "Error when login with apple :"+ error.message);
+                    Alert.alert("", "Error when login with apple ");
                     // handle other errors
                   }
                 }

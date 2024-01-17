@@ -1,4 +1,4 @@
-package com.mapactionmobile;
+package io.actionmap;
 
 import android.os.Build;
 import android.os.Bundle;

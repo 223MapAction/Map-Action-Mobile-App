@@ -2,6 +2,7 @@ import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import { Camera } from "expo-camera";
 export default async function pickImage() {
+  console.log("La fonction pickImage est appelée.");
   const status = await askAsync();
   let result;
   if (status) {

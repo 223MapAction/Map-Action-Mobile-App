@@ -7,6 +7,7 @@ import { Callout } from "react-native-maps";
 import { getImage } from "../utils/http/http";
 import { getLatLon, reverseGeocode } from "../utils/location";
 import moment from "moment";
+
 export default class Map extends Component {
   state = {
     location: {

@@ -5,10 +5,10 @@ import manifest from "../app.json";
 Geocoder.init(manifest.expo.android.config.googleMaps.apiKey);
 // Geocoder.init("AIzaSyD0klc1PQS8QK--Be3rF3i8kW_idy04AVQ");
 export async function getLocationPermissions() {
-  const { granted } = await location.getPermissionsAsync();
+  const { granted } = await location.requestForegroundPermissionsAsync();
   if (granted) return true;
 
-  const { granted: g2 } = await location.requestPermissionsAsync();
+  const { granted: g2 } = await location.requestForegroundPermissionsAsync();
   return g2;
 }
 export async function getCurrentPlaces() {
