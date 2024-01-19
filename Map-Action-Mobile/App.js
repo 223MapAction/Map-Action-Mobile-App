@@ -10,6 +10,7 @@ import root from "./redux/root";
 const store = createStore(root, applyMiddleware(thunk));
 import * as FileSystem from "expo-file-system";
 import StackNavigation from "./components/StackNavigation";
+import MapboxPlacesInput from "./shared/MapPlace";
 
 
 export default class App  extends React.Component  {
@@ -75,6 +76,8 @@ export default class App  extends React.Component  {
               <Provider store={store}>
               
                 <StackNavigation />
+                
+                {/* < MapboxPlacesInput /> */}
               </Provider>
             </SafeAreaView>
           </SafeAreaProvider>

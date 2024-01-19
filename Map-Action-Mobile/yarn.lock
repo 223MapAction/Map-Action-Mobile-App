@@ -3924,7 +3924,7 @@ expo-web-browser@~12.3.0:
     compare-urls "^2.0.0"
     url "^0.11.0"
 
-expo@~49.0.15:
+expo@^49.0.0:
   version "49.0.21"
   resolved "https://registry.npmjs.org/expo/-/expo-49.0.21.tgz"
   integrity sha512-JpHL6V0yt8/fzsmkAdPdtsah+lU6Si4ac7MDklLYvzEil7HAFEsN/pf06wQ21ax4C+BL27hI6JJoD34tzXUCJA==
@@ -6563,6 +6563,11 @@ react-native-keyboard-aware-scroll-view@^0.9.5:
   dependencies:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
+
+react-native-mapbox-places-autocomplete@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.npmjs.org/react-native-mapbox-places-autocomplete/-/react-native-mapbox-places-autocomplete-0.0.3.tgz"
+  integrity sha512-k0Sn61Jc/etuCuZNPyI6QnQwv6S6P4oiivDhNHr+BekBRxFBx/Dki/L7aRmrY6+jR8Yur0vJpAd9Xj5EYZUHTQ==
 
 react-native-maps@1.7.1:
   version "1.7.1"

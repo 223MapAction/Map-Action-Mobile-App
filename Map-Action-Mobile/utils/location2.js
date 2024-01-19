@@ -38,7 +38,7 @@ export async function getCurrentPlaces() {
     return [];
   }
 }
-export async function getCurrentPosition() {
+export async function getCurrentPosition1() {
   try {
     const granted = await getLocationPermissions();
     if (!granted) {
