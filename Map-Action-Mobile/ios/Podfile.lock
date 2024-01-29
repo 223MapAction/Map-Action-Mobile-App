@@ -77,6 +77,15 @@ PODS:
     - hermes-engine/Pre-built (= 0.72.6)
   - hermes-engine/Pre-built (0.72.6)
   - libevent (2.1.12)
+  - MapboxCommon (23.8.4)
+  - MapboxCoreMaps (10.16.2):
+    - MapboxCommon (~> 23.8)
+  - MapboxMaps (10.16.2):
+    - MapboxCommon (= 23.8.4)
+    - MapboxCoreMaps (= 10.16.2)
+    - MapboxMobileEvents (= 1.0.10)
+    - Turf (~> 2.0)
+  - MapboxMobileEvents (1.0.10)
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
@@ -518,6 +527,17 @@ PODS:
     - React-Core
   - RNGestureHandler (2.12.1):
     - React-Core
+  - rnmapbox-maps (10.1.8):
+    - MapboxMaps (= 10.16.2)
+    - React
+    - React-Core
+    - rnmapbox-maps/DynamicLibrary (= 10.1.8)
+    - Turf
+  - rnmapbox-maps/DynamicLibrary (10.1.8):
+    - MapboxMaps (= 10.16.2)
+    - React
+    - React-Core
+    - Turf
   - RNReanimated (3.3.0):
     - DoubleConversion
     - FBLazyVector
@@ -548,6 +568,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - Yoga
   - SocketRocket (0.6.1)
+  - Turf (2.7.1)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -617,6 +638,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - "rnmapbox-maps (from `../node_modules/@rnmapbox/maps`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -630,7 +652,12 @@ SPEC REPOS:
     - FBSDKShareKit
     - fmt
     - libevent
+    - MapboxCommon
+    - MapboxCoreMaps
+    - MapboxMaps
+    - MapboxMobileEvents
     - SocketRocket
+    - Turf
 
 EXTERNAL SOURCES:
   boost:
@@ -762,6 +789,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/datetimepicker"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  rnmapbox-maps:
+    :path: "../node_modules/@rnmapbox/maps"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   Yoga:
@@ -801,6 +830,10 @@ SPEC CHECKSUMS:
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: 8057e75cfc1437b178ac86c8654b24e7fead7f60
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
+  MapboxCommon: 23deb9c2abe05897a3ade46aac391c9d2ada396e
+  MapboxCoreMaps: b6921145ffe26eff2ec0fa84edb99496a189ea53
+  MapboxMaps: f7a24f57ee25ea6eb9d195c9b0273bb8776fcbc1
+  MapboxMobileEvents: de50b3a4de180dd129c326e09cd12c8adaaa46d6
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: 28469809442eb4eb5528462705f7d852948c8a74
   RCTTypeSafety: e9c6c409fca2cc584e5b086862d562540cb38d29
@@ -840,10 +873,12 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: ddc4ee162bfd41b0d2c68bf2d95acd81dd7f1f93
   RNDateTimePicker: 3942382593f104af226ad9c56e16166960c7ae30
   RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
+  rnmapbox-maps: 9ee4efc507ce4db3d90892854740350d16825c72
   RNReanimated: 9f7068e43b9358a46a688d94a5a3adb258139457
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
+  Turf: f68a7e2fd017ccf7f9520e650c18dc5637e5e54e
   Yoga: b76f1acfda8212aa16b7e26bcce3983230c82603
 
-PODFILE CHECKSUM: 91aa53dd8f2465ef4110044cec765f256c3aabd6
+PODFILE CHECKSUM: bc52e273c29f175ab85e1232aa951c42411094d1
 
 COCOAPODS: 1.14.3

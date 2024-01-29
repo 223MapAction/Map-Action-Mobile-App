@@ -25,6 +25,7 @@ import HeaderLeft from "../../utils/HeaderLeft";
 import Popup from "../../shared/Popup";
 import { Audio } from "expo-av";
 import { getCurrentCity, getLatLon } from "../../utils/location";
+import {getCurrentCityFromAddress, getCurrentPosition} from '../../utils/locationMap'
 import * as ImagePicker from "expo-image-picker";
 import { setIncident, setUser } from "../../utils/userStorage";
 import { ScrollView } from "react-native-gesture-handler";
@@ -122,6 +123,8 @@ class IncidentForm extends Component {
     if (this.state.zone === "") {
       alert("nous n'avons pas encore déterminé votre position");
       await this.getCurrentCity();
+      // await this.getCurrentCityFromAddress();
+
     }
     if (this.state.status.isRecording) {
       await this.stopRecording();
@@ -222,20 +225,38 @@ class IncidentForm extends Component {
 
   async componentDidMount() {
     await this.getCurrentCity();
+    // await this.getCurrentCityFromAddress();
+
   }
   uploadProgress = (pourcent) => {
     this.setState({ pourcent });
   };
   async getCurrentCity() {
     try {
-      const zone = await getCurrentCity();
-      this.setState({ zone });
-      const { latitude: lattitude, longitude } = await getLatLon();
-      this.setState({ lattitude, longitude });
+      const currentPosition = await getCurrentPosition();
+      
+      if (currentPosition) {
+        console.log("Latitude:", currentPosition.latitude);
+        console.log("Longitude:", currentPosition.longitude);
+        console.log
+        
+        // Mettez à jour l'état avec les données de position
+        this.setState({ 
+          latitude: currentPosition.latitude,
+          longitude: currentPosition.longitude,
+          zone:currentPosition.address,
+          // Vous pouvez également stocker la position exacte de l'incident si nécessaire
+          // incidentLocation: { latitude: currentPosition.latitude, longitude: currentPosition.longitude }
+        });
+      } else {
+        console.log("Position not available");
+      }
     } catch (ex) {
       alert(ex);
+      console.log("Error:", ex);
     }
   }
+  
 
   async recordAsync() {
     this.setState({ audio: null });

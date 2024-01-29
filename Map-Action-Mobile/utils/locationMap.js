@@ -18,7 +18,7 @@ export async function getCurrentPosition() {
       return null;
     } else {
       const { coords } = await location.getCurrentPositionAsync();
-      const { data } = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coords.longitude},${coords.latitude}.json?access_token=Map_Box_api`);
+      const { data } = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coords.longitude},${coords.latitude}.json?access_token=${Map_Box_api}`);
 
       const city = getCurrentCityFromAddress(data.features);
       
@@ -42,9 +42,11 @@ export async function getPositionFromAddress(address) {
       Alert.alert("", "Vous n'avez pas activé le service de localisation");
       return null;
     } else {
-      const { data } = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=votre_clé_mapbox`);
+      const { data } = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${Map_Box_api}`);
+      console.log(data)
 
       const city = getCurrentCityFromAddress(data.features);
+      console.log(city)
       
       return {
         address: data.features[0].place_name,
@@ -62,22 +64,38 @@ export async function getPositionFromAddress(address) {
 // Fonction pour extraire la ville à partir des résultats de géocodage
 export function getCurrentCityFromAddress(results) {
   let res = getAddress(results, ["locality"]);
-  // ... (autres critères de localisation)
+  // console.log(res)
+  if (res === false) {
+    res = getAddress(results, ["sublocality_level_1"]);
+  }
+  if (res === false) {
+    res = getAddress(results, ["sublocality"]);
+  }
+  if (res === false) {
+    res = getAddress(results, ["administrative_area_level_2"]);
+  }
+  if (res === false) {
+    res = getAddress(results, ["administrative_area_level_1"]);
+  }
   return res;
 }
 
 // Fonction pour extraire une composante d'adresse en fonction des critères donnés
 function getAddress(results, criters) {
-  for (let { address_components } of results) {
-    for (let ad of address_components) {
-      let exists = true;
-      for (let type of criters) {
-        if (!ad.types.includes(type)) exists = false;
-      }
-      if (exists === true) {
-        return ad.long_name;
+  for (const result of results) { // Utilisez const pour éviter les modifications accidentelles
+    if (result && result.address_components) { // Vérifiez si address_components existe
+      for (const ad of result.address_components) {
+        let exists = true;
+        for (const type of criters) {
+          if (!ad.types.includes(type)) exists = false;
+        }
+        if (exists === true) {
+          console.log("exists", ad);
+          return ad.long_name;
+        }
       }
     }
   }
-  return false;
+  // console.log(results)
+  return null; // Renvoyez null pour indiquer l'absence de résultat
 }

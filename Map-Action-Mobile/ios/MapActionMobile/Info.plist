@@ -52,7 +52,7 @@
       </dict>
     </dict>
     <key>NSCameraUsageDescription</key>
-    <string>Allow $(PRODUCT_NAME) to access your camera.</string>
+    <string>The app needs permission to your camera in order to take photos for upload it as like your profil picture or additional pictures</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>This allow us to use your location for incident declaration to get the exact positon of incident and show you the incidents in your sector by your position</string>
     <key>NSLocationAlwaysUsageDescription</key>

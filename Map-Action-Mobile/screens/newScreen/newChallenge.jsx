@@ -35,6 +35,7 @@ import { read_user } from "../../utils/http/user";
 import { onLogin } from "../../redux/user/action";
 import { setUser } from "../../utils/userStorage";
 import { GooglePlaceModal } from "../../shared/GooglePlace";
+import {MapboxPlaceModal} from "../../shared/MapPlace"
 class NewChallenge extends Component {
   state = {
     zone: "",
@@ -429,7 +430,22 @@ export function LieuInput({
   const [show, setShow] = React.useState(false);
   return (
     <React.Fragment>
-      <GooglePlaceModal
+      {/* <GooglePlaceModal
+        onChange={({ adresse, latitude, longitude, ville }) => {
+          console.log("change", adresse);
+          onChange({
+            latitude,
+            lieu: adresse,
+            longitude,
+            zone: ville,
+          });
+          setShow(false);
+        }}
+        onHide={() => setShow(false)}
+        value={value}
+        visible={show}
+      /> */}
+      <MapboxPlaceModal
         onChange={({ adresse, latitude, longitude, ville }) => {
           console.log("change", adresse);
           onChange({

@@ -143,7 +143,7 @@ class Account extends Component {
   }
 
   render() {
-    console.log("erreur avec la photo,", this.state.photo);
+    console.log("photo,", this.state.photo);
 
     return (
       <View style={styles.container}>
