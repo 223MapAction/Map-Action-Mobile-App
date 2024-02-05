@@ -6,22 +6,26 @@ import { getUser } from "../userStorage";
 // export const ApiUrl = "http://137.74.196.127:8000";
 //http://192.168.1.255:8000
 
-export const ApiUrl = "https://backend-dashboard.map-action.com";
+export const ApiUrl = "http://139.144.63.238";
+// export const ApiUrl = "https://backend-dashboard.map-action.com";
 
 export const ShareUrl = "https://www.actionmap.withvolkeno.com";
-const apiEndPoint = ApiUrl + "/api";
+// const apiEndPoint = ApiUrl + "/api";
+const apiEndPoint = ApiUrl + "/MapApi";
+
 
 const axios = http.create({
   baseURL: apiEndPoint,
   timeout: 20000,
 });
 
-export const ResetPasswordUrl = apiEndPoint + "/password_reset";
+// export const ResetPasswordUrl = apiEndPoint + "/password_reset";
+export const ResetPasswordUrl = apiEndPoint + "/password_reset/";
 axios.interceptors.response.use(null, (error) => {
   console.log("error from http", error);
   const status = error?.response?.status || null;
 
-  if (status && !(status >= 200 && error < 300)) {
+  if (status && !(status >= 200 && status < 300)) {
     if (status >= 400 && status < 500) {
       const data = error.response.data;
       if (data?.detail === "Signature has expired.") {

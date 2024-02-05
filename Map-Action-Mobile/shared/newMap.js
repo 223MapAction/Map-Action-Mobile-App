@@ -5,6 +5,8 @@ import MapView, { Marker, Callout } from "react-native-maps";
 import { getImage } from "../utils/http/http";
 import { getLatLon, reverseGeocode } from "../utils/location";
 import moment from "moment";
+import Mapbox from '@rnmapbox/maps';
+Mapbox.setAccessToken('pk.eyJ1IjoiYTc1NDJzIiwiYSI6ImNscmYzanhqeTAxMmgycW9iaXh1N2xoOHAifQ._ZPygGz31WSjc06zwpHNKA');
 
 export default class Map extends Component {
   state = {
@@ -107,10 +109,16 @@ export default class Map extends Component {
     }
 
     return (
+      // <View style={{ flex: 1 }}>
+      //   <MapView style={styles.container} region={region} showsMyLocationButton={true}>
+      //     {this.renderMarkers()}
+      //   </MapView>
+      // </View>
+
       <View style={{ flex: 1 }}>
-        <MapView style={styles.container} region={region} showsMyLocationButton={true}>
-          {this.renderMarkers()}
-        </MapView>
+      <Mapbox.MapView style={styles.container} region={region} showsMyLocationButton={true}>
+        {this.renderMarkers()}
+      </Mapbox.MapView>
       </View>
     );
   }

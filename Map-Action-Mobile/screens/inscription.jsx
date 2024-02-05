@@ -133,13 +133,14 @@ class Inscription extends Auth {
       const { error } = ex;
       if (error) {
         const errors = {};
-        Object.keys(error).map((field) => {
+        Object.keys(error).forEach((field) => {
           const err = error[field];
           errors[field] = err[0];
         });
         console.log(errors);
         if (flag) {
-          Alert.alert("", errors["email"], [{ text: "Ok", style: "cancel" }]);
+          const errorMessage = errors["email"] || "An error occurred";
+          Alert.alert("", errorMessage, [{ text: "Ok", style: "cancel" }]);
         } else {
           this.setState({ errors });
         }

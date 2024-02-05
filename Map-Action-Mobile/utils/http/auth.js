@@ -25,14 +25,19 @@ export async function register({ avatar, ...data }) {
       "Content-Type": "multipart/form-data",
     },
   };
-  return http.post("/auth/register/", formdata, options);
+  // return http.post("/auth/register/", formdata, options);
+  return http.post("/register/", formdata, options);
+
 }
 export function login(user) {
-  return http.post("/auth/login/", user);
+  // return http.post("/auth/login/", user);
+  return http.post("/login/", user);
+
 }
 
 export function verify_token(token) {
-  return http.post("/auth/verify-token/", { token });
+  // return http.post("/auth/verify-token/", { token });
+  return http.post("/verify-token/", { token });
 }
 export function refresh_token(data) {
   return http.post("/auth/refresh-token/", data);

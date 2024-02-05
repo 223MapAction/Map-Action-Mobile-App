@@ -240,13 +240,10 @@ class IncidentForm extends Component {
         console.log("Longitude:", currentPosition.longitude);
         console.log
         
-        // Mettez à jour l'état avec les données de position
         this.setState({ 
-          latitude: currentPosition.latitude,
+          lattitude: currentPosition.latitude,
           longitude: currentPosition.longitude,
           zone:currentPosition.address,
-          // Vous pouvez également stocker la position exacte de l'incident si nécessaire
-          // incidentLocation: { latitude: currentPosition.latitude, longitude: currentPosition.longitude }
         });
       } else {
         console.log("Position not available");

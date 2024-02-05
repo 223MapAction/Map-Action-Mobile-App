@@ -1,11 +1,11 @@
-import * as location from "expo-location";
+import * as Location from "expo-location";
 import { Alert } from "react-native";
 import axios from 'axios';
 
 
 
 export async function getLocationPermissions() {
-  const { granted } = await location.requestForegroundPermissionsAsync();
+  const { granted } = await Location.requestForegroundPermissionsAsync();
   return granted;
 }
 
@@ -17,7 +17,7 @@ export async function getCurrentPosition() {
       Alert.alert("", "Vous n'avez pas activé le service de localisation");
       return null;
     } else {
-      const { coords } = await location.getCurrentPositionAsync();
+      const { coords } = await Location.getCurrentPositionAsync();
       const { data } = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coords.longitude},${coords.latitude}.json?access_token=${Map_Box_api}`);
 
       const city = getCurrentCityFromAddress(data.features);
@@ -82,8 +82,8 @@ export function getCurrentCityFromAddress(results) {
 
 // Fonction pour extraire une composante d'adresse en fonction des critères donnés
 function getAddress(results, criters) {
-  for (const result of results) { // Utilisez const pour éviter les modifications accidentelles
-    if (result && result.address_components) { // Vérifiez si address_components existe
+  for (const result of results) { // Utilisation de const pour éviter les modifications accidentelles
+    if (result && result.address_components) { // Vérification si address_components existe
       for (const ad of result.address_components) {
         let exists = true;
         for (const type of criters) {
@@ -98,4 +98,35 @@ function getAddress(results, criters) {
   }
   // console.log(results)
   return null; // Renvoyez null pour indiquer l'absence de résultat
+}
+
+export async function getVille(location) {
+  console.log("location", location);
+  if (!location.latitude || !location.longitude) return "";
+  const result = await Location.reverseGeocodeAsync(location);
+  if (result && result.length > 0) return result[0].city || result[0].region;
+
+  return "";
+}
+export async function getPays(city) {
+  const geocode = await Location.geocodeAsync(city);
+  if (geocode && geocode.length > 0) {
+    const result = await Location.reverseGeocodeAsync(geocode[0]);
+    if (result.length > 0) return result[0].country;
+  }
+  return "";
+}
+
+export async function ensure() {
+  const status = await Location.requestForegroundPermissionsAsync();
+  if (!status.granted) {
+    Alert.alert("", "Permission to access location was denied");
+    return false;
+  }
+  try {
+    Location.hasServicesEnabledAsync().then((bool) => {
+      if (!bool) location.enableNetworkProviderAsync();
+    });
+  } catch (ex) {}
+  return true;
 }
