@@ -23,16 +23,13 @@ export async function loginAsync() {
     if (type === 'success') {
       return rest;
     } else if (type === 'error') {
-      // Gérer l'erreur spécifique
       console.error('Erreur lors de la connexion:', rest.error);
       return null;
     } else {
-      // L'utilisateur a annulé la connexion
       console.warn('Connexion annulée par l\'utilisateur');
       return null;
     }
   } catch (error) {
-    // Gérer toute autre erreur inattendue
     console.error('Erreur inattendue lors de la connexion:', error);
     return null;
   }

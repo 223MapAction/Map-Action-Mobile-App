@@ -1,4 +1,10 @@
 PODS:
+  - AppAuth (1.6.2):
+    - AppAuth/Core (= 1.6.2)
+    - AppAuth/ExternalUserAgent (= 1.6.2)
+  - AppAuth/Core (1.6.2)
+  - AppAuth/ExternalUserAgent (1.6.2):
+    - AppAuth/Core
   - boost (1.76.0)
   - DoubleConversion (1.1.6)
   - EXApplication (5.3.1):
@@ -386,6 +392,9 @@ PODS:
   - React-jsinspector (0.72.6)
   - React-logger (0.72.6):
     - glog
+  - react-native-app-auth (7.1.0):
+    - AppAuth (~> 1.6)
+    - React-Core
   - react-native-fbsdk-next (12.1.2):
     - React-Core
     - react-native-fbsdk-next/Core (= 12.1.2)
@@ -527,13 +536,13 @@ PODS:
     - React-Core
   - RNGestureHandler (2.12.1):
     - React-Core
-  - rnmapbox-maps (10.1.8):
+  - rnmapbox-maps (10.1.12):
     - MapboxMaps (= 10.16.2)
     - React
     - React-Core
-    - rnmapbox-maps/DynamicLibrary (= 10.1.8)
+    - rnmapbox-maps/DynamicLibrary (= 10.1.12)
     - Turf
-  - rnmapbox-maps/DynamicLibrary (10.1.8):
+  - rnmapbox-maps/DynamicLibrary (10.1.12):
     - MapboxMaps (= 10.16.2)
     - React
     - React-Core
@@ -614,6 +623,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-app-auth (from `../node_modules/react-native-app-auth`)
   - react-native-fbsdk-next (from `../node_modules/react-native-fbsdk-next`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - react-native-safe-area (from `../node_modules/react-native-safe-area`)
@@ -644,6 +654,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AppAuth
     - FBAEMKit
     - FBSDKCoreKit
     - FBSDKCoreKit_Basics
@@ -741,6 +752,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-app-auth:
+    :path: "../node_modules/react-native-app-auth"
   react-native-fbsdk-next:
     :path: "../node_modules/react-native-fbsdk-next"
   react-native-maps:
@@ -797,6 +810,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   EXApplication: 042aa2e3f05258a16962ea1a9914bf288db9c9a1
@@ -849,6 +863,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 3bf18ff7cb03cd8dfdce08fbbc0d15058c1d71ae
   React-jsinspector: 194e32c6aab382d88713ad3dd0025c5f5c4ee072
   React-logger: cebf22b6cf43434e471dc561e5911b40ac01d289
+  react-native-app-auth: 1da4b0ec30756ae1f4df8e96d2505b1ce5fbcc1f
   react-native-fbsdk-next: 9c40664b1501be29572795c2e4c8e347f39f556f
   react-native-maps: 667f9b975549c6fa9b1631bf859440f68ebd3b8f
   react-native-safe-area: e8230b0017d76c00de6b01e2412dcf86b127c6a3
@@ -873,7 +888,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: ddc4ee162bfd41b0d2c68bf2d95acd81dd7f1f93
   RNDateTimePicker: 3942382593f104af226ad9c56e16166960c7ae30
   RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
-  rnmapbox-maps: 9ee4efc507ce4db3d90892854740350d16825c72
+  rnmapbox-maps: 11465b21d75c8c0ead48a51abcbf6ea40f95861d
   RNReanimated: 9f7068e43b9358a46a688d94a5a3adb258139457
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Turf: f68a7e2fd017ccf7f9520e650c18dc5637e5e54e

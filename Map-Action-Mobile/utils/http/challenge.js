@@ -36,6 +36,7 @@ export function create_challenge({ photo, video, ...data }, uploadProgress) {
 export async function list_challenge() {
   // const { results } = await http.get("/evenement/");
   const { results } = await http.get("/Event/");
+  console.log("les evenements", results)
   const usersId = Array.from(new Set(results.map((r) => r.user_id)));
   const users = (await list_user()).filter((f) => usersId.includes(f.id));
   const participates = await list_participate();

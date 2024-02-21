@@ -15,7 +15,8 @@ import { onLogin, onGetUsers } from "../redux/user/action";
 import { login, getTokenByEmail } from "../utils/http/auth";
 import Validator from "../utils/validator";
 import Storage from "../utils/userStorage";
-import JwtDecode from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
+import "core-js/stable/atob";
 import { read_user } from "../utils/http/user";
 import Popup from "../shared/Popup";
 import Auth from "./Auth";
@@ -61,6 +62,7 @@ class Login extends Auth {
     let token;
     try {
       const data = await getTokenByEmail(userInfo.email);
+      console.log("l'email de l'utilisateur ", data)
       token = data.token;
     } catch (ex) {
       console.log("error", ex.response);
@@ -70,7 +72,7 @@ class Login extends Auth {
     } else {
       if (true) {
         try {
-          let { user_id } = JwtDecode(token);
+          let { user_id } = jwtDecode(token);
           const user = await read_user(user_id);
           this.props.onLogin({ token: token, user });
           await Storage.setUser({ token: token, user });
@@ -92,15 +94,24 @@ class Login extends Auth {
   async loginWithCredentials() {
     this.setState({ loading: true });
     const { email, password } = this.state;
+    const user = { email, password }; // Créez correctement l'objet user avec email et password
+    console.log("Les utilisateurs ", user); // Assurez-vous que user est correctement défini
+
+    // Vérifiez si user est défini ici
+    console.log("User est-il défini ici ?", user);
+
     try {
-      const data = await login({ email, password });
-      let user_id = JwtDecode(token);
+      console.log("Avant la fonction")
+      const data = await login(user);
+      console.log("les données", data)
+      let user_id = jwtDecode(data.token);
       const user = await read_user(user_id.user_id);
       console.log("user", user_id);
       this.props.onLogin({ token: data.token, user });
       await Storage.setUser({ token: data.token, user });
       this.redirect();
     } catch (error) {
+      console.error("Error during login:", error);
       if (error) {
         const errors = {};
         if (error.non_field_errors) {
@@ -116,7 +127,8 @@ class Login extends Auth {
       }
     }
     this.setState({ loading: false });
-  }
+}
+
 
   renderModal() {
     const onPress = () => {

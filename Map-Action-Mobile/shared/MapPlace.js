@@ -43,16 +43,17 @@ const MapboxAutoComplete = ({ value, onChange }) => {
   }, []);
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#FFF", marginTop:10}}>
+    <View style={{ flex: 1, backgroundColor: "#FFF", marginTop:"8%"}}>
       <MapboxPlacesAutocomplete
         id="oridin"
         inputStyle={style.input}
         containerStyle={{
-          paddingHorizontal: 15,
-          paddingVertical: 0,
+          paddingHorizontal: "5%",
+          paddingVertical: 5,
           backgroundColor: "transparent",
           borderRadius: 10,
-          // height:"7%",
+          marginBottom: 12,
+          height:"8%",
           // borderWidth:0.25,
 
         }}
@@ -68,43 +69,43 @@ const MapboxAutoComplete = ({ value, onChange }) => {
           });
         }}
         placeholder="Chercher un lieu"
-        textInputProps={{
-          autoFocus: false,
-          InputComp: InputComp,
-          textChanged: () => {},
-          onHide: () => onChange(null),
-          clearButtonMode: "never",
-          autoCompleteType: "off",
-          autoCorrect: false,
-          autoCapitalize: "none",
-          keyboardType: "web-search",
-          onSelectPosition: onSelectPosition,
-        }}
-        onFail={(error) => console.error(error)}
-        rowStyle={{
-          backgroundColor: "#FFFFFF",
-          padding: 13,
-          marginBottom: 5,
-          minHeight: 44,
-          flexDirection: "row",
-        }}
-        textInputContainerStyle={{
-          backgroundColor: "rgba(0,0,0,0)",
-          borderTopWidth: 0,
-          paddingHorizontal: 10,
-          borderBottomWidth: 0,
-        }}
-        textInputStyle={{
-          height: 40,
-          marginBottom: 5,
-          width: "100%",
-          paddingHorizontal: 5,
-          backgroundColor: "#FFF",
-          justifyContent: "center",
-        }}
-        predefinedPlacesDescription={{
-          color: "#1faadb",
-        }}
+        // textInputProps={{
+        //   autoFocus: false,
+        //   InputComp: InputComp,
+        //   textChanged: () => {},
+        //   onHide: () => onChange(null),
+        //   clearButtonMode: "never",
+        //   autoCompleteType: "off",
+        //   autoCorrect: false,
+        //   autoCapitalize: "none",
+        //   keyboardType: "web-search",
+        //   onSelectPosition: onSelectPosition,
+        // }}
+        // onFail={(error) => console.error(error)}
+        // rowStyle={{
+        //   backgroundColor: "#FFFFFF",
+        //   padding: 13,
+        //   marginBottom: 5,
+        //   minHeight: 44,
+        //   flexDirection: "row",
+        // }}
+        // textInputContainerStyle={{
+        //   backgroundColor: "rgba(0,0,0,0)",
+        //   borderTopWidth: 0,
+        //   paddingHorizontal: 10,
+        //   borderBottomWidth: 0,
+        // }}
+        // textInputStyle={{
+        //   height: 40,
+        //   marginBottom: 5,
+        //   width: "100%",
+        //   paddingHorizontal: 5,
+        //   backgroundColor: "#FFF",
+        //   justifyContent: "center",
+        // }}
+        // predefinedPlacesDescription={{
+        //   color: "#1faadb",
+        // }}
       />
       <Loader visible={loading} />
     </View>
@@ -172,13 +173,13 @@ export function MapboxPlaceModal({ visible, value, onChange, onHide }) {
 const style = StyleSheet.create({
   input: {
     height: 20,
-    marginBottom: 5,
-    marginTop: "7%",
+    // marginBottom: 10,
+    // marginTop: "7%",
     width: "100%",
     paddingHorizontal: 5,
     backgroundColor: "#FFF",
     justifyContent: "center",
-    borderRadius: 10,
+    borderRadius: 5,
     borderWidth: 0.25,
     minHeight: 50,
     maxHeight: 50,
