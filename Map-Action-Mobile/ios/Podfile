@@ -37,6 +37,10 @@ elsif podfile_properties.key?('ios.flipper') then
   end
 end
 
+# @generated begin @rnmapbox/maps-rnmapboxmapsimpl - expo prebuild (DO NOT MODIFY) sync-fbeac2b7a608b512b075ace5dd4ef3e81318d2ad
+$RNMapboxMapsDownloadToken = 'sk.eyJ1IjoiYTc1NDJzIiwiYSI6ImNscmtqOHpjbzBmcnIycWs0ZzByeHJhdHAifQ.YFurGvpr4p_tR4059faHvg'
+$RNMapboxMapsVersion = '10.16.2'
+# @generated end @rnmapbox/maps-rnmapboxmapsimpl
 target 'MapActionMobile' do
   use_expo_modules!
   config = use_native_modules!
@@ -47,6 +51,13 @@ target 'MapActionMobile' do
   # Flags change depending on the env values.
   flags = get_default_flags()
 
+# @generated begin pre_installer - expo prebuild (DO NOT MODIFY) sync-c8812095000d6054b846ce74840f0ffb540c2757
+  pre_install do |installer|
+# @generated begin @rnmapbox/maps-pre_installer - expo prebuild (DO NOT MODIFY) sync-ea4905840bf9fcea0acc62e92aa2e784f9d760f8
+    $RNMapboxMaps.pre_install(installer)
+# @generated end @rnmapbox/maps-pre_installer
+  end
+# @generated end pre_installer
   use_react_native!(
     :path => config[:reactNativePath],
     :hermes_enabled => podfile_properties['expo.jsEngine'] == nil || podfile_properties['expo.jsEngine'] == 'hermes',
@@ -58,6 +69,9 @@ target 'MapActionMobile' do
   )
 
   post_install do |installer|
+# @generated begin @rnmapbox/maps-post_installer - expo prebuild (DO NOT MODIFY) sync-c4e8f90e96f6b6c6ea9241dd7b52ab5f57f7bf36
+    $RNMapboxMaps.post_install(installer)
+# @generated end @rnmapbox/maps-post_installer
     react_native_post_install(
       installer,
       config[:reactNativePath],

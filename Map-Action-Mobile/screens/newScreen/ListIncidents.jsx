@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import moment from "moment";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import Map from "../../shared/Map";
+import Map from "../../shared/newMap";
 import * as Location from "expo-location";
 import SafeAreaView from "react-native-safe-area-view";
 

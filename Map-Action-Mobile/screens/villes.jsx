@@ -11,7 +11,8 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { connect } from "react-redux";
-import { getPays, ensure, getVille } from "../utils/location";
+// import { getPays, ensure, getVille } from "../utils/location";
+import { getPays, ensure, getVille } from "../utils/locationMap";
 import { list_zone } from "../utils/http/incident";
 import { onGetCommunaute } from "../redux/communautes/action";
 import { list_communaute } from "../utils/http/communaute";

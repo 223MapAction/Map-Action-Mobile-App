@@ -31,7 +31,7 @@ class Inscription extends Auth {
     email: "",
     password: "",
     password_confirmation: "",
-    adress: "",
+    address: "",
     loading: false,
     isModalVisible: false,
     userInfo: {},
@@ -43,14 +43,14 @@ class Inscription extends Auth {
     phone: Validator.string().label("N° de téléphone du citoyen"),
     first_name: Validator.string().min(2).required().max(100).label("Prénom"),
     last_name: Validator.string().min(2).required().max(100).label("Nom"),
-    adress: Validator.string().max(255).label("Adresse"),
+    address: Validator.string().max(255).label("Adresse"),
     password: Validator.string().min(5).required().label("Mot De Passe"),
     password_confirmation: Validator.string()
       .label("Confirmer mot de passe")
       .required()
       .test(
         "passwords-match",
-        "Confirmer mot de passe must match Mot De Passe",
+        "les mots de passes ne sont pas identiques",
         function (value) {
           return this.parent.password === value;
         }
@@ -103,14 +103,22 @@ class Inscription extends Auth {
 
     this.setState({ loading: true });
     try {
-      let { data: res } = await register(data);
+      console.log("Avant l'appel de la fonction register");
+      const response = await register(data);
+      console.log("Après l'appel de la fonction register, réponse :", response.user.email);
 
-      const { token } = await get_token(data.email, data.password);
-      data.password = res.password;
+      const { token } = response;
+      const accessToken = token.access;
+      // const { token } = await get_token(data.email, data.password);
+      // console.log(accessToken)
+      data.password = response.password;
       data.is_active = true;
-      res = await update_user(res.id, data, token);
+      res = await update_user(response.user.id, data, accessToken);
+      // res = await update_user(response.id, data);
       await setUser({ token, user: res });
       this.props.onLogin({ token, user: res });
+      // await setUser({ user: response });
+      // this.props.onLogin({ user: response });
       if (this.props.route.params?.flow) {
         const { params, nextRoute } = this.props.route.params;
         const { item } = params;
@@ -133,13 +141,15 @@ class Inscription extends Auth {
       const { error } = ex;
       if (error) {
         const errors = {};
-        Object.keys(error).map((field) => {
+        Object.keys(error).forEach((field) => {
           const err = error[field];
           errors[field] = err[0];
         });
         console.log(errors);
         if (flag) {
-          Alert.alert("", errors["email"], [{ text: "Ok", style: "cancel" }]);
+          const errorMessage = errors["email"] || "An error occurred";
+          console.log("Erreur de l'inscription:", errorMessage);
+          Alert.alert("Erreur", errorMessage, [{ text: "Ok", style: "cancel" }]);          
         } else {
           this.setState({ errors });
         }
@@ -286,11 +296,11 @@ class Inscription extends Auth {
                     containerStyle={styles.section}
                     label="Adresse"
                     iconColor={"#666666"}
-                    error={this.state.errors.adress}
+                    error={this.state.errors.address}
                     onChange={({ latitude, lieu, longitude, zone }) => {
                       this.setState({ latitude, adress: lieu, longitude });
                     }}
-                    value={this.state.adress}
+                    value={this.state.address}
                   />
                   <View style={styles.section}>
                     <MaterialIcons name="email" color={"#666666"} size={20} />

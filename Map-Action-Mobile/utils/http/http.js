@@ -6,34 +6,71 @@ import { getUser } from "../userStorage";
 // export const ApiUrl = "http://137.74.196.127:8000";
 //http://192.168.1.255:8000
 
-export const ApiUrl = "https://backend-dashboard.map-action.com";
+export const ApiUrl = "http://192.168.1.26";
+// export const ApiUrl = "http://139.144.63.238";
+// export const ApiUrl = "https://backend-dashboard.map-action.com";
 
 export const ShareUrl = "https://www.actionmap.withvolkeno.com";
-const apiEndPoint = ApiUrl + "/api";
+// const apiEndPoint = ApiUrl + "/api";
+const apiEndPoint = ApiUrl + "/MapApi";
+
 
 const axios = http.create({
   baseURL: apiEndPoint,
   timeout: 20000,
+  withCredentials: true,
 });
 
-export const ResetPasswordUrl = apiEndPoint + "/password_reset";
+// const csrfTokenUrl = '/get_csrf_token/';
+
+// // Fonction pour récupérer le jeton CSRF depuis l'API Django
+// async function fetchCSRFToken() {
+//   try {
+//     const response = await axios.get(csrfTokenUrl);
+//     const csrfToken = response.data.csrf_token;
+//     console.log('CSRF Token:', csrfToken);
+//     return csrfToken;
+//   } catch (error) {
+//     console.error('Erreur lors de la récupération du jeton CSRF :', error);
+//     throw error;
+//   }
+// }
+
+// // Appel de la fonction pour récupérer le jeton CSRF
+// fetchCSRFToken();
+
+
+// export const ResetPasswordUrl = apiEndPoint + "/password_reset";
+export const ResetPasswordUrl = apiEndPoint + "/password_reset/";
 axios.interceptors.response.use(null, (error) => {
   console.log("error from http", error);
   const status = error?.response?.status || null;
 
-  if (status && !(status >= 200 && error < 300)) {
-    if (status >= 400 && status < 500) {
+  if (status && !(status >= 200 && status < 300)) {
+    if (status === 400) {
+      const data = error.response.data;
+      console.error("erreur", data)
+      if (data && data.errors) {
+        // Traiter les erreurs de validation spécifiques
+        const validationErrors = data.errors;
+        const errorMessage = Object.values(validationErrors).flat().join('\n');
+        Alert.alert("Erreur de validation", errorMessage);
+      } else {
+        Alert.alert("Erreur de saisie", "Veuillez vérifier vos données et réessayer.");
+      }
+    } else if (status >= 400 && status < 500) {
       const data = error.response.data;
       if (data?.detail === "Signature has expired.") {
         // Alert.alert("session expirée veuillez vous reconnecter");
       }
       return Promise.reject(data);
     } else {
-      Alert.alert("Server Error", "Please try again", error);
+      Alert.alert("Erreur serveur", "Veuillez réessayer plus tard.");
     }
   }
   return Promise.reject(error);
 });
+
 function getUrl(url) {
   return url;
 }
@@ -112,6 +149,9 @@ export function makeid(length) {
   }
   return result;
 }
+
+
+
 
 export default {
   get,

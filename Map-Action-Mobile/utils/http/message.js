@@ -10,11 +10,13 @@ export default {
 };
 
 export async function list_messages(id) {
-  const res = await http.get("/messagebyuser/" + id + "/");
+  // const res = await http.get("/messagebyuser/" + id + "/");
+  const res = await http.get("/message_user/" + id + "/");
   return res;
 }
 
 export async function responsebymessage(id) {
-  const res = await http.get("/responsebymessage/" + id + "/");
+  // const res = await http.get("/responsebymessage/" + id + "/");
+  const res = await http.get("/response_msg/" + id + "/");
   return res;
 }

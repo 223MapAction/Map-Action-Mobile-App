@@ -28,9 +28,11 @@
     "plugins": [
       [
         
-        "expo-camera",
+        
+        "@rnmapbox/maps",
         {
-          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
+          "RNMapboxMapsVersion": "10.16.2",
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiYTc1NDJzIiwiYSI6ImNscmtqOHpjbzBmcnIycWs0ZzByeHJhdHAifQ.YFurGvpr4p_tR4059faHvg"
         }
       ]
     ],

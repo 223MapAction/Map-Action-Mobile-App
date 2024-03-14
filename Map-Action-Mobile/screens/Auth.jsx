@@ -6,8 +6,11 @@ import { Settings } from "react-native-fbsdk-next";
 // import LinkedInModal from "react-native-linkedin";
 import manifest from "../app.json";
 import { Icon } from "react-native-elements";
-// import * as AppleAuthentication from "expo-apple-authentication";
-import jwtDcode from "jwt-decode";
+import { authorize, refresh, revoke } from 'react-native-app-auth';
+import { prefetchConfiguration } from 'react-native-app-auth';
+import * as AppleAuthentication from "expo-apple-authentication";
+import {jwtDecode} from "jwt-decode";
+import "core-js/stable/atob";
 import {
   loginAsync,
   loginWithLinkedIn,
@@ -56,17 +59,53 @@ function TwitterLogin({ onFinish, Tref }) {
 
 export default class Inscription extends Component {
   async registerWithGoogle() {
-    const data = await loginAsync();
-    const userInfo = {
-      email: data.user.email,
-      first_name: data.user.givenName,
-      last_name: data.user.familyName,
-      adress: "",
-      phone: "",
-      provider: "Google",
-      avatar: data.user.photoUrl,
-    };
-    this.onFinish(userInfo);
+    try {
+      console.log("Début de la fonction registerWithGoogle");
+      // const data = await loginAsync();
+      const config = {
+        warmAndPrefetchChrome: true,
+        issuer: 'https://accounts.google.com',
+        clientId: '483002182680-0s842plrl4ooejd72ofcubetsh78fcis.apps.googleusercontent.com',
+        redirectUrl: 'com.googleusercontent.apps.483002182680-0s842plrl4ooejd72ofcubetsh78fcis:/oauth2redirect/google',
+        scopes: ['openid', 'profile', 'email',]
+      };
+      console.log("Configuration:", config);
+      prefetchConfiguration(config);
+
+      console.log("Appel de la fonction authorize");
+      const authState = await authorize(config);
+      console.log("la fonction est appelee ici ", authState)
+      const idTokenPayload = jwtDecode(authState.idToken);
+      const userInfo = {
+        email: idTokenPayload?.email,
+        first_name: idTokenPayload?.given_name,
+        last_name: idTokenPayload?.family_name,
+        avatar: idTokenPayload?.picture,
+        address: "",
+        phone: "",
+        provider: "Google",
+       
+      };
+      console.log("user info ", userInfo)
+  
+      this.onFinish(userInfo);
+
+      // Refresh token
+      console.log("Appel de la fonction refresh avec le token:", authState);
+      const refreshedState = await refresh(config, {
+        refreshToken: authState.refreshToken
+      });
+      
+      // Revoke token
+      await revoke(config, {
+        tokenToRevoke: authState.refreshToken
+      });
+      
+    } catch (error) {
+      console.log("erreur ", error)
+      Alert.alert('', 'error when we tried to register with google', error)
+    }
+    
   }
   twitterRef = React.createRef();
 
@@ -317,7 +356,7 @@ export default class Inscription extends Component {
                   if (e.code === "ERR_CANCELED") {
                     // handle that the user canceled the sign-in flow
                   } else {
-                    Alert.alert("", "Error when login with apple");
+                    Alert.alert("", "Error when login with apple ");
                     // handle other errors
                   }
                 }
