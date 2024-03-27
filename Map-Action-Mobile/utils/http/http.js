@@ -7,6 +7,7 @@ import { getUser } from "../userStorage";
 //http://192.168.1.255:8000
 
 export const ApiUrl = "http://192.168.1.26";
+// export const ApiUrl = "http://192.168.1.28";
 // export const ApiUrl = "http://139.144.63.238";
 // export const ApiUrl = "https://backend-dashboard.map-action.com";
 

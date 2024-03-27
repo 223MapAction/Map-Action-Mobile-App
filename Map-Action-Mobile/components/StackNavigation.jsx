@@ -1,214 +1,3 @@
-// import { createStackNavigator } from "@react-navigation/stack";
-// import "moment/locale/fr";
-
-// import React from "react";
-// import { NavigationContainer } from "@react-navigation/native";
-// import Accueil from "../screens/accueil";
-// import DrawerNavigation from "./DrawerNavigation";
-
-// import Badge from "../screens/badge/badge";
-// import DetailSecteur from "../screens/detailSecteur";
-// import Communaute from "../screens/newScreen/communaute";
-// import Login from "../screens/login";
-// import Logout from "../screens/Logout";
-// import HeaderLeft from "../utils/HeaderLeft";
-// import Inscription from "../screens/inscription";
-// import Contact from "../screens/newScreen/Contact";
-
-// import Ville from "../screens/villes";
-
-
-// import Messages from "../screens/message";
-// import Account from "../screens/account";
-// import ListIncidents from "../screens/newScreen/ListIncidents";
-// import ListIncidents2 from "../screens/badge/ListIncident2";
-// import DetailIncident from "../screens/newScreen/DetailIncident";
-// import ListChallenge from "../screens/newScreen/ListChallenge";
-// import ListChallenge2 from "../screens/badge/ListChallenge2";
-// import ChangePassword from "../screens/newScreen/ChangePassword";
-// import RecordVideo from "../shared/RecordVideo";
-// import Image from "../screens/newScreen/Image";
-// import Gallery from "../screens/newScreen/Gallery";
-// const Stack = createStackNavigator();
-
-// export default class StackNavigation extends React.Component {
-//   render() {
-//     let initialRouteName = "Welcome";
-
-//     return (
-//       <NavigationContainer>
-//         <Stack.Navigator
-//           headerMode="screen"
-//           initialRouteName={initialRouteName}
-//           screenOptions={screenOptions}
-//         >
-//           <Stack.Screen
-//             name="Welcome"
-//             component={Welcome}
-//             options={{ headerShown: false }}
-//           />
-//           <Stack.Screen
-//             name="Categories"
-//             component={Categories}
-//             options={{
-//               title: "Classer l’incident",
-//             }}
-//           />
-//           <Stack.Screen
-//             name="Picture"
-//             component={Camera}
-//             options={{
-//               headerShown: false,
-//             }}
-//           />
-//           <Stack.Screen
-//             name="Image"
-//             component={Image}
-//             options={{
-//               title: "",
-//             }}
-//           />
-//           <Stack.Screen
-//             name="Gallery"
-//             component={Gallery}
-//             options={{
-//               title: "Galerie",
-//             }}
-//           />
-
-//           <Stack.Screen
-//             name="Account"
-//             component={Account}
-//             options={{
-//               title: "Modifier mon profile",
-//             }}
-//           />
-//           <Stack.Screen
-//             name="ChangePassword"
-//             component={ChangePassword}
-//             options={{
-//               title: "Modifier mon mot de passe",
-//             }}
-//           />
-//           <Stack.Screen
-//             name="ListChallenge2"
-//             component={ListChallenge2}
-//             options={{
-//               title: "Challenges",
-//             }}
-//           />
-//           <Stack.Screen
-//             name="ListIncidents"
-//             component={ListIncidents}
-//             options={{
-//               title: "",
-//             }}
-//           />
-//           <Stack.Screen
-//             name="ListChallenge"
-//             component={ListChallenge}
-//             options={{
-//               title: "évenements",
-//             }}
-//           />
-//           <Stack.Screen
-//             name="IncidentForm"
-//             component={IncidentForm}
-//             options={{
-//               headerShown: false,
-//             }}
-//           />
-//           <Stack.Screen
-//             name="DetailIncident"
-//             component={DetailIncident}
-//             options={{
-//               headerShown: false,
-//             }}
-//           />
-//           <Stack.Screen
-//             name="DetailSecteur"
-//             component={DetailSecteur}
-//             options={{
-//               title: "",
-//             }}
-//           />
-
-//           <Stack.Screen
-//             name="Accueil"
-//             component={Accueil}
-//             options={{ headerShown: false }}
-//           />
-//           <Stack.Screen
-//             name="Contact"
-//             component={Contact}
-//             options={{
-//               title: "Nous contacter",
-//             }}
-//           />
-//           <Stack.Screen name="DetailChallenge" component={DetailChallenge} />
-//           <Stack.Screen name="DetailVilles" component={DetailVilles} />
-
-//           <Stack.Screen name="DetailOng" component={DetailOng} />
-//           <Stack.Screen
-//             name="Communaute"
-//             component={Communaute}
-//             options={{
-//               title: "Communautés",
-//             }}
-//           />
-//           <Stack.Screen
-//             name="Ville"
-//             component={Ville}
-//             options={{
-//               title: "Villes",
-//             }}
-//           />
-//           <Stack.Screen
-//             name="Badge"
-//             component={Badge}
-//             options={{
-//               title: "Gagner un Badge",
-//             }}
-//           />
-//           <Stack.Screen
-//             name="NewChallenge"
-//             component={NewChallenge}
-//             options={{
-//               title: "Créer un challenge",
-//             }}
-//           />
-//           <Stack.Screen
-//             name="Messages"
-//             component={Messages}
-//             options={{
-//               title: "Message",
-//             }}
-//           />
-
-//           <Stack.Screen name="Register" component={Register} />
-//           <Stack.Screen name="Login" component={Login} />
-//           <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-
-//           <Stack.Screen name="Inscription" component={Inscription} />
-
-//           <Stack.Screen
-//             name="Logout"
-//             component={Logout}
-//             options={{ headerShown: false }}
-//           />
-
-//           <Stack.Screen
-//             name="DrawerNavigation"
-//             component={DrawerNavigation}
-//             options={{
-//               headerShown: false,
-//             }}
-//           />
-//         </Stack.Navigator>
-//       </NavigationContainer>
-//     );
-//   }
-// }
 // import RecordVideo from "../shared/RecordVideo";
 import Welcome from "../screens/welcome";
 import Image from "../screens/newScreen/Image";
@@ -245,6 +34,9 @@ import DrawerNavigation from "./DrawerNavigation";
 import { NavigationContainer } from '@react-navigation/native';
 import Login from "../screens/login";
 import HeaderLeft from "../utils/HeaderLeft";
+import InscriptionChoice from "../screens/inscriptionChoice";
+import PhoneInscription from "../screens/phoneInscription";
+import EmailInscription from "../screens/emailInscription";
 
 
 const Stack = createStackNavigator();
@@ -486,6 +278,10 @@ const StackNavigation = () => {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="Inscription" component={Inscription} />
+      <Stack.Screen name="choice" component={InscriptionChoice} />
+      <Stack.Screen name="phone" component={PhoneInscription} />
+      <Stack.Screen name="email" component={EmailInscription} />
+
 
       <Stack.Screen
           name="Logout"

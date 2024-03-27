@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, Alert, TouchableOpacity, Dimensions } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 import * as Facebook from "react-native-fbsdk-next";
-import { Settings } from "react-native-fbsdk-next";
+import { LoginManager, AccessToken } from "react-native-fbsdk-next";
 // import LinkedInModal from "react-native-linkedin";
 import manifest from "../app.json";
 import { Icon } from "react-native-elements";
@@ -61,12 +61,23 @@ export default class Inscription extends Component {
   async registerWithGoogle() {
     try {
       console.log("Début de la fonction registerWithGoogle");
+      let clientId = '';
+      let redirectUrl = '';
+
+      if (Platform.OS === 'ios') {
+          clientId = '483002182680-0s842plrl4ooejd72ofcubetsh78fcis.apps.googleusercontent.com';
+          redirectUrl = 'com.googleusercontent.apps.483002182680-0s842plrl4ooejd72ofcubetsh78fcis:/oauth2redirect/google';
+      } else if (Platform.OS === 'android') {
+          clientId = '292571474979-0iat5mvc9fbnlfdhsj3b9uk456nvml2g.apps.googleusercontent.com';
+          redirectUrl = 'com.googleusercontent.apps.292571474979-0iat5mvc9fbnlfdhsj3b9uk456nvml2g:/oauth2redirect/google';
+      }
+
       // const data = await loginAsync();
       const config = {
         warmAndPrefetchChrome: true,
         issuer: 'https://accounts.google.com',
-        clientId: '483002182680-0s842plrl4ooejd72ofcubetsh78fcis.apps.googleusercontent.com',
-        redirectUrl: 'com.googleusercontent.apps.483002182680-0s842plrl4ooejd72ofcubetsh78fcis:/oauth2redirect/google',
+        clientId: clientId,
+        redirectUrl: redirectUrl,
         scopes: ['openid', 'profile', 'email',]
       };
       console.log("Configuration:", config);
@@ -103,7 +114,7 @@ export default class Inscription extends Component {
       
     } catch (error) {
       console.log("erreur ", error)
-      Alert.alert('', 'error when we tried to register with google', error)
+      Alert.alert('erreur', 'error when we tried to register with google', error.message)
     }
     
   }
@@ -147,7 +158,7 @@ export default class Inscription extends Component {
         linkText={title + " avec LinkedIn"}
         clientSecret="PSXUn5CERO91Dpgr"
         permissions={["r_liteprofile", "r_emailaddress"]}
-        clientID="78ljig6vq3qg4g"
+        clientID="7407210972645627"
         redirectUri="https://google.co.in"
         onError={() => null}
         onSuccess={({ access_token }) =>
@@ -158,40 +169,35 @@ export default class Inscription extends Component {
   }
 
   logIn = async () => {
-    try {
-      await Facebook.Settings.setAppID(manifest.expo.appID);
-      const { type, token } = await Facebook.logInWithReadPermissionsAsync(
-        manifest.expo.appID,
-        {
-          permissions: ["public_profile", "email"],
+      
+        try {
+          const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+          
+          if (result.isCancelled) {
+            throw new Error('User cancelled the login process');
+          }
+    
+          const data = await AccessToken.getCurrentAccessToken();
+          
+          if (!data) {
+            throw new Error('Something went wrong obtaining access token');
+          }
+          
+          const accessToken = data.accessToken.toString();
+          console.log(accessToken);
+          
+          // Use the access token to make requests to Facebook API
+          // For example, you can get user information like this:
+          const response = await fetch(`https://graph.facebook.com/me?access_token=${accessToken}&fields=id,name,email,picture`);
+          const userData = await response.json();
+          console.log(userData);
+          
+        } catch (error) {
+          console.log(error);
+          Alert.alert('Error', error.message);
         }
-      );
-      if (type === "success") {
-        // Get the user's name using Facebook's Graph API
-        const response = await fetch(
-          `https://graph.facebook.com/me?access_token=${token}&fields=id,name,email,first_name,last_name,address`
-        );
-
-        const userInfo = await response.json();
-
-        const data = {
-          first_name: userInfo.first_name,
-          last_name: userInfo.last_name,
-          phone: "",
-          adress: userInfo.address || "",
-          email: userInfo.email,
-          provider: "Facebook",
-        };
-
-        this.onFinish(data);
-      }
-    } catch ({ message }) {
-      alert(
-        `une erreur s'est produite lors de la connexion avec Facebook, veuillez réessayer ${message}`
-      );
-    }
   };
-
+    
   logoutWithFacebook = async () => {
     this.setState({ userInfo: {} });
   };
@@ -325,7 +331,7 @@ export default class Inscription extends Component {
                     ],
                   });
                   let token = credential.identityToken;
-                  let { email } = jwtDcode(token);
+                  let { email } = jwtDecode(token);
                   console.log("email", email);
                   console.log("cre", credential);
                   if (email) {
