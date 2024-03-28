@@ -11,7 +11,9 @@ const store = createStore(root, applyMiddleware(thunk));
 import * as FileSystem from "expo-file-system";
 import StackNavigation from "./components/StackNavigation";
 import MapboxPlacesInput from "./shared/MapPlace";
-
+import InputOTP from "./screens/inputOTP";
+import InscriptionChoice from "./screens/inscriptionChoice";
+import PhoneIncription from "./screens/phoneInscription";
 
 export default class App  extends React.Component  {
   // state = {
@@ -76,8 +78,10 @@ export default class App  extends React.Component  {
               <Provider store={store}>
               
                 <StackNavigation />
-                
+                {/* <InscriptionChoice/> */}
                 {/* < MapboxPlacesInput /> */}
+                {/* < InputOTP /> */}
+                {/* <PhoneIncription/> */}
               </Provider>
             </SafeAreaView>
           </SafeAreaProvider>
