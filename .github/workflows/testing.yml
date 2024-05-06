@@ -5,9 +5,9 @@ name: react navice CI
 
 on:
   push:
-    branches: main
+    branches: [ "main" ]
   pull_request:
-    branches: dev
+    branches: [ "dev" ]
 
 jobs:
   build:
