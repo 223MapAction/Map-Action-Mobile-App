@@ -1,5 +1,5 @@
-import React from "react";
-import Icon from "../shared/icon";
+import { React } from "react";
+import { Icon } from "../shared/icon";
 import { Divider } from "react-native-elements";
 import {
   View,

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import {React, Component } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import actionmap from "../assets/actionmapBlanc.png";
-import icon from "../assets/iconApp.png";
-import AppIntroSlider from "react-native-app-intro-slider";
-import Slide1 from "./slides/Slide1";
-import Slide2 from "./slides/Slide2";
-import Slide3 from "./slides/Slide3";
+import {actionmap} from "../assets/actionmapBlanc.png";
+import {icon} from "../assets/iconApp.png";
+import {AppIntroSlider} from "react-native-app-intro-slider";
+import {Slide1} from "./slides/Slide1";
+import {Slide2} from "./slides/Slide2";
+import {Slide3} from "./slides/Slide3";
 class Accueil extends Component {
   items = [
     { Content: Slide1, key: "0" },
