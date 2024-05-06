@@ -97,7 +97,7 @@ packagingOptions {
         versionCode 11
         versionName "1.0.0"
         manifestPlaceholders = [
-        appAuthRedirectScheme: 'io.actionmap'
+        appAuthRedirectScheme: 'com.googleusercontent.apps.292571474979-0iat5mvc9fbnlfdhsj3b9uk456nvml2g:/oauth2redirect/google'
         ]
         buildConfigField("boolean", "REACT_NATIVE_UNSTABLE_USE_RUNTIME_SCHEDULER_ALWAYS", (findProperty("reactNative.unstable_useRuntimeSchedulerAlways") ?: true).toString())
     }

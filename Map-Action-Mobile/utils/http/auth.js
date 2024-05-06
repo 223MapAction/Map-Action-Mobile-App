@@ -83,7 +83,7 @@ export function verify_token(token) {
   return http.post("/verify-token/", { token });
 }
 export function refresh_token(data) {
-  return http.post("/auth/refresh-token/", data);
+  return http.post("/token/refresh/", data);
 }
 
 export function get_token(email, password) {
