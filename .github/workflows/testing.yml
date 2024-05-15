@@ -27,8 +27,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - name: install dependencies
-        working-directory: Map-Action-Mobile-App
+      - name: Install packages
+        run: npm install
+      - name: install dependencie
         run: npm ci
       - name: run test
         run: npm run test
