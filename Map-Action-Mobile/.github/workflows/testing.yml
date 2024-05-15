@@ -28,10 +28,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: install dependencies
-        working-directory: Map-Action-Mobile
-        run: npm install
+        working-directory: Map-Action-Mobile-App
+        run: npm ci
       - name: run test
         run: npm run test
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
+
 
