@@ -1,5 +1,0 @@
-yarn add react-native-icon-badge
-yarn add react-native-gesture-handler
-yarn add @react-native-community/datetimepicker
-yarn add moment
-yarn add lodash
