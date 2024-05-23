@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1711708344527" clover="3.2.0">
+  <project timestamp="1711708344528" name="All files">
+    <metrics statements="21" coveredstatements="3" conditionals="3" coveredconditionals="0" methods="10" coveredmethods="0" elements="34" coveredelements="3" complexity="0" loc="21" ncloc="21" packages="2" files="2" classes="2"/>
+    <package name="screens">
+      <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="Logout.js" path="/home/yugo19/map-action/Map-Action-Mobile-App/Map-Action-Mobile/screens/Logout.js">
+        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="17" coveredstatements="3" conditionals="3" coveredconditionals="0" methods="8" coveredmethods="0"/>
+      <file name="userStorage.js" path="/home/yugo19/map-action/Map-Action-Mobile-App/Map-Action-Mobile/utils/userStorage.js">
+        <metrics statements="17" coveredstatements="3" conditionals="3" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
