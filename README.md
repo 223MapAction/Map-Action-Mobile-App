@@ -5,6 +5,18 @@
 ## User and developper documentation
 
 ### Developper documentation
+---
+## The tech stack
+
+![Selection_072](https://github.com/223MapAction/Map-Action-Mobile-App/assets/64170643/7c9ecee1-e40f-4549-9877-444187df5e69)
+
+---
+
+## How it works
+
+![Selection_069](https://github.com/223MapAction/Map-Action-Mobile-App/assets/64170643/d532162c-1800-4e63-9855-e389fe5d0fed)
+
+---
 
 #### Requierements
 
