@@ -6,6 +6,11 @@
 
 ### Developper documentation
 
+## Tech Stack
+
+![Selection_072](https://github.com/223MapAction/Map-Action-Mobile-App/assets/64170643/5200ded0-b180-40c4-9634-d24be82bab7d)
+
+
 #### Requierements
 
 - Node.js v18 (Use nvm to manage Node.js version)
