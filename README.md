@@ -11,6 +11,8 @@
 
 ![Selection_072](https://github.com/223MapAction/Map-Action-Mobile-App/assets/64170643/7c9ecee1-e40f-4549-9877-444187df5e69)
 
+![Selection_079](https://github.com/223MapAction/Map-Action-Mobile-App/assets/64170643/dac6e554-27a5-439f-8abf-cd8b2ee39386)
+
 ---
 
 ## How it works
