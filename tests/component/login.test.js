@@ -1,10 +1,30 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
+import { Provider } from 'react-redux';
 import Login from '../../screens/login';
+import configureStore from 'redux-mock-store';
+import ErrorBoundary from "../ErrorBoundary"
+
+
+
+const mockStore = configureStore([]);
+const store = mockStore({
+  user: {
+    token: null,
+    user: {},
+  },
+});
 
 describe('Login component', () => {
     test('renders correctly', () => {
-        const { getByPlaceholderText, getByText } = render( < Login / > );
+        const { getByPlaceholderText, getByText } = render(
+            <ErrorBoundary>
+                <Provider store={store}>
+                    <Login />
+                </Provider>
+            </ErrorBoundary>
+            
+        );
 
         expect(getByPlaceholderText('Adresse mail du citoyen')).toBeTruthy();
         expect(getByPlaceholderText('mot de passe')).toBeTruthy();
@@ -15,7 +35,11 @@ describe('Login component', () => {
     });
 
     test('submits form with valid input', async() => {
-        const { getByPlaceholderText, getByText } = render( < Login / > );
+        const { getByPlaceholderText, getByText } = render(
+            <Provider store={store}> {/* Enveloppez votre composant dans le Provider */}
+                <Login />
+            </Provider>
+        );
 
         fireEvent.changeText(getByPlaceholderText('Adresse mail du citoyen'), 'test@example.com');
         fireEvent.changeText(getByPlaceholderText('mot de passe'), 'password');
@@ -28,15 +52,19 @@ describe('Login component', () => {
     });
 
     test('shows error with invalid input', async() => {
-        const { getByPlaceholderText, getByText } = render( < Login / > );
+        const { getByPlaceholderText, getByText } = render(
+            <Provider store={store}> {/* Enveloppez votre composant dans le Provider */}
+                <Login />
+            </Provider>
+        );
 
         fireEvent.changeText(getByPlaceholderText('Adresse mail du citoyen'), 'invalidemail');
         fireEvent.changeText(getByPlaceholderText('mot de passe'), '');
         fireEvent.press(getByText('Se connecter'));
 
         await waitFor(() => {
-            expect(getByText('Adresse Mail')).toBeTruthy(); // Assuming this is how you display the error message for email
-            expect(getByText('Mot de passe')).toBeTruthy(); // Assuming this is how you display the error message for password
+            expect(getByText('Adresse Mail')).toBeTruthy(); 
+            expect(getByText('Mot de passe')).toBeTruthy(); 
         });
     });
 });

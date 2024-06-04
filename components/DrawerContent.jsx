@@ -1,4 +1,4 @@
-import { React } from "react";
+import React, { Component } from "react";
 import { Icon } from "../shared/icon";
 import { Divider } from "react-native-elements";
 import {
@@ -16,29 +16,28 @@ import { MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
 import image from "../assets/actionmapBlanc.png";
 import { connect } from "react-redux";
 
-class DrawerContent extends React.Component {
+class DrawerContent extends Component {
   navigate(route, params = {}) {
     this.props.navigation.dispatch(DrawerActions.closeDrawer());
     this.props.navigation.navigate(route, params);
   }
+
   render() {
     const { navigation, state, ...props } = this.props;
     const index = state.index;
+
+    console.log("Rendering DrawerContent");
+
     return (
       <>
         <View style={{ ...style.top, paddingTop: 30 }}>
           <MaterialIcons name="menu" size={30} color={"#2d9cdb"} />
-          <Text style={{ color: "#38A3D0", fontSize: 20, marginLeft: 20 }}>
+          <Text testID="menu" style={{ color: "#38A3D0", fontSize: 20, marginLeft: 20 }}>
             Menu
           </Text>
         </View>
         <DrawerContentScrollView {...props} style={style.container}>
           <>
-            {/* <DrawerRoute
-              {...props}
-              title="Carte"
-              icon="place" 
-            /> */}
             <DrawerRoute
               {...props}
               title="Challenges"
@@ -128,6 +127,8 @@ class DrawerContent extends React.Component {
     );
   }
 }
+
+
 
 const DrawerRoute = ({ title, icon, onPress, focused, ...rest }) => {
   return (
