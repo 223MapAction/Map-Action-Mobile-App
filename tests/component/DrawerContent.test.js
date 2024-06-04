@@ -1,30 +1,46 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import {
-    DrawerContent
-} from '../../components/DrawerContent';
-import { NavigationContext } from '@react-navigation/native';
+import DrawerContent from '../../components/DrawerContent';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import ErrorBoundary from "../ErrorBoundary";
+import { NavigationContainer } from "@react-navigation/native";
+import { DrawerActions } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-const mockNavigate = jest.fn();
-const mockDispatch = jest.fn();
+const mockStore = configureStore([]);
+const store = mockStore({
+  user: {
+    token: null,
+    user: {},
+  },
+});
 
-const navigationMock = {
-    navigate: mockNavigate,
-    dispatch: mockDispatch,
+const mockNavigation = {
+  dispatch: jest.fn(),
+  navigate: jest.fn(),
+  closeDrawer: jest.fn(),
+};
+
+const mockState = {
+  index: 0,
+  routes: [],
 };
 
 describe('DrawerContent', () => {
-    it('renders correctly', () => {
-        const { getByText } = render( < NavigationContext.Provider value = { navigationMock } >
-            <
-            DrawerContent navigation = { navigationMock }
-            state = {
-                { index: 0 }
-            }
-            /> < /
-            NavigationContext.Provider >
-        );
+  it('renders correctly', () => {
+    const { getByTestId } = render(
+      <SafeAreaProvider>
+        <ErrorBoundary>
+          <NavigationContainer>
+            <Provider store={store} >
+              <DrawerContent navigation={mockNavigation} state={mockState} />
+            </Provider>
+          </NavigationContainer>
+        </ErrorBoundary>
+      </SafeAreaProvider>
+    );
 
-        expect(getByText('Menu')).toBeTruthy();
-    });
+    expect(getByTestId("menu")).toBeTruthy();
+  });
 });

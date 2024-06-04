@@ -121,7 +121,8 @@ class IncidentForm extends Component {
 
   submit = async () => {
     if (this.state.zone === "") {
-      alert("nous n'avons pas encore déterminé votre position");
+      console.log("nous n'avons pas encore déterminé votre position");
+      // alert("nous n'avons pas encore déterminé votre position");
       await this.getCurrentCity();
       // await this.getCurrentCityFromAddress();
 
@@ -365,6 +366,7 @@ class IncidentForm extends Component {
                       color: "#fff",
                       marginStart: 6,
                     }}
+                    testID="zone"
                   >
                     {this.state.zone}
                   </Text>
