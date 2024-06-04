@@ -11,9 +11,9 @@ Supports
 - **Community Links**
 
     - **Facebook**
-        MapAction223
+        [[MapAction223](https://www.facebook.com/MapAction223/)]
     - **X**
-        [map_action](https://x.com/map_action)
+        [[map_action](https://x.com/map_action)]
     - **LinkedIn**
         [https://www.linkedin.com/company/map-action/]
     
