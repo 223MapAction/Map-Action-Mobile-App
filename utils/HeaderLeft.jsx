@@ -8,6 +8,7 @@ const HeaderLeft = ({ colors }) => {
   const [pressed, onClick] = useState(false);
   return (
     <TouchableOpacity
+      testID="header-left"
       onPress={() => {
         if (pressed === false) {
           onClick(true);
