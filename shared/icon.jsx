@@ -6,5 +6,5 @@ export default ({focused,name,color,...rest})=>{
     if(focused){
         iconName = name
     }
-    return <MaterialIcons focused={focused} name={iconName} size={24} style={{color}} {...rest}/>
+    return <MaterialIcons testID="icon" focused={focused} name={iconName} size={24} style={{color}} {...rest}/>
 }

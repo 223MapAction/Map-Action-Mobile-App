@@ -15,10 +15,11 @@ describe("Icon", () => {
     const { getByTestId, rerender } = render(
       <Icon focused={true} name="focused-icon" color="red" />
     );
-    const icon = getByTestId("icon");
+    let icon = getByTestId("icon");
     expect(icon.props.name).toBe("focused-icon");
 
     rerender(<Icon focused={false} name="unfocused-icon" color="blue" />);
+    icon = getByTestId("icon");
     expect(icon.props.name).toBe("unfocused-icon");
   });
 
@@ -29,5 +30,4 @@ describe("Icon", () => {
     const icon = getByTestId("icon");
     expect(icon.props.style.color).toBe("red");
   });
-
 });
