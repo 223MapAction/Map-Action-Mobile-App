@@ -100,6 +100,7 @@ export default class RecordVideo extends Component {
             }}
           >
             <TouchableOpacity
+            testID="record-video"
               style={{
                 width: btnHeight,
                 height: btnHeight,

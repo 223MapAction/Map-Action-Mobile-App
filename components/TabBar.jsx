@@ -5,7 +5,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 export default function TabBar({ navigation }) {
   return (
-    <TouchableOpacity onPress={() => navigation.push("Picture")}>
+    <TouchableOpacity testID="tab-bar-button" onPress={() => navigation.push("Picture")}>
       <LinearGradient
         colors={["#4CF284", "#09AB3F"]}
         style={{

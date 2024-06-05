@@ -36,9 +36,12 @@ describe('Login component', () => {
 
     test('submits form with valid input', async() => {
         const { getByPlaceholderText, getByText } = render(
-            <Provider store={store}> {/* Enveloppez votre composant dans le Provider */}
-                <Login />
-            </Provider>
+            <ErrorBoundary>
+                <Provider store={store}>
+                    <Login />
+                </Provider>
+            </ErrorBoundary>
+
         );
 
         fireEvent.changeText(getByPlaceholderText('Adresse mail du citoyen'), 'test@example.com');
@@ -53,9 +56,11 @@ describe('Login component', () => {
 
     test('shows error with invalid input', async() => {
         const { getByPlaceholderText, getByText } = render(
-            <Provider store={store}> {/* Enveloppez votre composant dans le Provider */}
-                <Login />
-            </Provider>
+            <ErrorBoundary>
+                <Provider store={store}> 
+                    <Login />
+                </Provider>
+            </ErrorBoundary>
         );
 
         fireEvent.changeText(getByPlaceholderText('Adresse mail du citoyen'), 'invalidemail');

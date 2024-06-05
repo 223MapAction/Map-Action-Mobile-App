@@ -6,9 +6,9 @@ import { getUser } from "../userStorage";
 // export const ApiUrl = "http://137.74.196.127:8000";
 //http://192.168.1.255:8000
 
-export const ApiUrl = "http://192.168.1.26";
+// export const ApiUrl = "http://192.168.1.26";
 // export const ApiUrl = "http://192.168.1.28";
-// export const ApiUrl = "http://139.144.63.238";
+export const ApiUrl = "http://139.144.63.238";
 // export const ApiUrl = "https://backend-dashboard.map-action.com";
 
 export const ShareUrl = "https://www.actionmap.withvolkeno.com";

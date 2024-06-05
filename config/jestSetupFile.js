@@ -44,8 +44,16 @@ jest.mock('react-native-fbsdk-next', () => ({
   AccessToken: "AccessToken"
 }));
 jest.mock('expo-apple-authentication', () => ({
-  AppleAuthentication: "AppleAuthentication"
+  AppleAuthentication: {
+    AppleAuthenticationButtonType: {
+      SIGN_IN: 'SIGN_IN',
+    },
+    AppleAuthenticationButtonStyle: {
+      BLACK: 'BLACK',
+    },
+  },
 }));
+
 jest.mock('expo-auth-session/providers/google', () => ({
   Google: "Google"
 }));
@@ -55,6 +63,12 @@ jest.mock('react-native-simple-twitter', () => ({
 jest.mock('@expo/vector-icons', () => ({
   Feather: "Feather",
   MaterialIcons: "MaterialIcons"
+}));
+jest.mock('react-native-elements', () => ({
+  Icon: "Icon"
+}));
+jest.mock('expo-linear-gradient', () => ({
+  LinearGradient: "LinearGradient"
 }));
 // jest.mock('react-native', () => ({
 //   Alert: {

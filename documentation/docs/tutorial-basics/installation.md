@@ -35,7 +35,7 @@ Installation setups
       ```
     - **Using npm:**
       ```bash
-      npm run:ios
+      npm run ios
       ```
     - **Using expo:**
       ```bash
@@ -45,7 +45,7 @@ Installation setups
 
     - **Using npm:**
       ```bash
-      npm run:android
+      npm run android
       ```
     - **Using expo:**
       ```bash

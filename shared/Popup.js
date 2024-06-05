@@ -20,6 +20,7 @@ export default class Popup extends Component {
   render() {
     return (
       <Modal
+      testID="modal"
         animationType="slide"
         transparent={true}
         visible={this.state.visible}
