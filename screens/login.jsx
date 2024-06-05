@@ -94,10 +94,8 @@ class Login extends Auth {
   async loginWithCredentials() {
     this.setState({ loading: true });
     const { email, password } = this.state;
-    const user = { email, password }; // Créez correctement l'objet user avec email et password
-    console.log("Les utilisateurs ", user); // Assurez-vous que user est correctement défini
-
-    // Vérifiez si user est défini ici
+    const user = { email, password }; 
+    console.log("Les utilisateurs ", user); 
     console.log("User est-il défini ici ?", user);
 
     try {

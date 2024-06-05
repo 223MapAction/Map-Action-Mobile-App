@@ -37,6 +37,7 @@ export default class AudioReader extends React.Component {
       <View style={styles.container}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Slider
+            testID="seek-slider"
             style={styles.slider}
             thumbStyle={styles.thumb}
             trackStyle={styles.track}
@@ -47,7 +48,8 @@ export default class AudioReader extends React.Component {
             minimumTrackTintColor="rgb(64, 224, 190)"
           />
 
-          <View style={{ marginLeft: 3 }}>
+                  
+          <View style={{ marginLeft: 3 }} testID="pause-button" >
             {isLoaded &&
               (isPlaying ? (
                 <TouchableOpacity
