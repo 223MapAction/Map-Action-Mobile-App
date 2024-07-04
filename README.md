@@ -2,8 +2,14 @@
 # Map-Action-Mobile-App
 Map Action Mobile is a mobile application designed for citizens to report an incidident.
 
+## Description
+Map Action Mobile is an application used by citizens to report incidents. Users can capture a photo of the incident and, if they wish, provide a title, description, a 5-second video, and an audio recording. Geolocation is enabled in real-time.
 
+Upon reporting, our AI-powered prediction model is immediately activated to detect the type of incident, its potential impact, context, and possible solutions for resolution.
 
+Citizens can track the progress of their reported incidents through the mobile application.
+
+---
 ## Developper documentation
 
 [Developper documenation](https://223mapaction.github.io/Map-Action-Mobile-App/)
